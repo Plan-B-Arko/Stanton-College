@@ -82,6 +82,11 @@ $originalfee = $registrationfee->amount;
     <td><b>Student Name</b></td>
     <td>{{ $details['student']['name'] }}</td>
   </tr>
+    <tr>
+    <td>4</td>
+    <td><b>Student Father Name</b></td>
+    <td>{{ $details['student']['fname'] }}</td>
+  </tr>
 
 
   <tr>
