@@ -104,6 +104,7 @@
                             <div class="box-body">
                                 <div class="table-responsive">
                                     @if('search')
+                                    {{-- @if(!@isset($request->search)) --}}
                                     {{-- @if (!@search) --}}
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -137,7 +138,7 @@
                                                         </td>
                                                         <td> {{ $value->year_id }}</td>
                                                         <td>
-                                                            {{-- <a title="Edit"
+                                                            <a title="Edit"
                                                                 href="{{ route('student.registration.edit', $value->student_id) }}"
                                                                 class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 
@@ -147,7 +148,7 @@
 
                                                             <a target="_blank" title="Details"
                                                                 href="{{ route('student.registration.details', $value->student_id) }}"
-                                                                class="btn btn-danger"><i class="fa fa-eye"></i></a> --}}
+                                                                class="btn btn-danger"><i class="fa fa-eye"></i></a>
 
                                                         </td>
 
@@ -192,17 +193,17 @@
                                                         </td>
                                                         <td> {{ $value->year_id }}</td>
                                                         <td>
-                                                            {{-- <a title="Edit"
+                                                            <a title="Edit"
                                                                 href="{{ route('student.registration.edit', $value->student_id) }}"
-                                                                class="btn btn-info"> <i class="fa fa-edit"></i> </a> --}}
+                                                                class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 
-                                                            {{-- <a title="Promotion"
+                                                            <a title="Promotion"
                                                                 href="{{ route('student.registration.promotion', $value->student_id) }}"
-                                                                class="btn btn-primary"><i class="fa fa-check"></i></a> --}}
+                                                                class="btn btn-primary"><i class="fa fa-check"></i></a>
 
-                                                            {{-- <a target="_blank" title="Details"
+                                                            <a target="_blank" title="Details"
                                                                 href="{{ route('student.registration.details', $value->student_id) }}"
-                                                                class="btn btn-danger"><i class="fa fa-eye"></i></a> --}}
+                                                                class="btn btn-danger"><i class="fa fa-eye"></i></a>
 
                                                         </td>
 
