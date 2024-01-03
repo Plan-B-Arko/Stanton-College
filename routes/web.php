@@ -29,6 +29,8 @@ use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\controllers\Backend\DefaultController;
 use App\Http\controllers\Backend\Account\StudentFeeController;
 use App\Http\controllers\Backend\Account\AccountSalaryController;
+use App\Http\controllers\Backend\Account\OtherCostController;
+use App\Http\controllers\Backend\Report\ProfitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -223,6 +225,7 @@ Route::post('/marks/grade/update/{id}',[GradeController::class, 'MarksGradeUpdat
 Route::get('marks/getsubject', [DefaultController::class, 'GetSubject'])->name('marks.getsubject');
 Route::get('student/marks/getstudents', [DefaultController::class, 'GetStudents'])->name('student.marks.getstudents');
 // end default route
+
 // Account Management all Route
 Route::prefix('accounts')->group(function(){
 // student fee all route
@@ -235,6 +238,20 @@ Route::get('/account/salary/view',[AccountSalaryController::class, 'AccountSalar
 Route::get('/account/salary/add',[AccountSalaryController::class, 'AccountSalaryAdd'])->name('account.salary.add');
 Route::get('/account/salary/getemployee',[AccountSalaryController::class, 'AccountSalaryGetEmployee'])->name('account.salary.getemployee');
 Route::post('/account/salary/store',[AccountSalaryController::class, 'AccountSalaryStore'])->name('account.salary.store');
+// ohters cost all route
+Route::get('/other/cost/view',[OtherCostController::class, 'OtherCostView'])->name('other.cost.view');
+Route::get('/other/cost/add',[OtherCostController::class, 'OtherCostAdd'])->name('other.cost.add');
+Route::post('/other/cost/store',[OtherCostController::class, 'OtherCostStore'])->name('store.other.cost');
+Route::get('/other/cost/edit/{id}',[OtherCostController::class, 'OtherCostEdit'])->name('edit.other.cost');
+Route::post('/other/cost/update/{id}',[OtherCostController::class, 'OtherCostUpdate'])->name('update.other.cost');
+Route::get('/other/cost/delete/{id}',[OtherCostController::class, 'OtherCostDelete'])->name('delete.other.cost');
+});
+// Reports Management All Route
+Route::prefix('reports')->group(function(){
+// monthly profit report all route 
+Route::get('/monthly/profit/view',[ProfitController::class, 'MonthlyProfitView'])->name('monthly.profit.view');
+Route::get('/monthly/profit/datewise',[ProfitController::class, 'MonthlyProfitDatewise'])->name('report.profit.datewise.get');
+Route::get('/monthly/profit/pdf',[ProfitController::class, 'MonthlyProfitPdf'])->name('report.profit.pdf');
 
 });
 });//end middleware auth route
