@@ -31,6 +31,7 @@ use App\Http\controllers\Backend\Account\StudentFeeController;
 use App\Http\controllers\Backend\Account\AccountSalaryController;
 use App\Http\controllers\Backend\Account\OtherCostController;
 use App\Http\controllers\Backend\Report\ProfitController;
+use App\Http\controllers\Backend\Report\MarkSheetController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -248,10 +249,13 @@ Route::get('/other/cost/delete/{id}',[OtherCostController::class, 'OtherCostDele
 });
 // Reports Management All Route
 Route::prefix('reports')->group(function(){
-// monthly profit report all route 
+// monthly profit report all route
 Route::get('/monthly/profit/view',[ProfitController::class, 'MonthlyProfitView'])->name('monthly.profit.view');
 Route::get('/monthly/profit/datewise',[ProfitController::class, 'MonthlyProfitDatewise'])->name('report.profit.datewise.get');
 Route::get('/monthly/profit/pdf',[ProfitController::class, 'MonthlyProfitPdf'])->name('report.profit.pdf');
+//marksheet generate all route
+Route::get('/marksheet/generate/view',[MarkSheetController::class, 'MarkSheetView'])->name('marksheet.generate.view');
+Route::get('/marksheet/generate/get',[MarkSheetController::class, 'MarkSheetGet'])->name('report.marksheet.get');
 
 });
 });//end middleware auth route
