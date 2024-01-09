@@ -32,6 +32,8 @@ use App\Http\controllers\Backend\Account\AccountSalaryController;
 use App\Http\controllers\Backend\Account\OtherCostController;
 use App\Http\controllers\Backend\Report\ProfitController;
 use App\Http\controllers\Backend\Report\MarkSheetController;
+use App\Http\controllers\Backend\Report\AttendanceReportController;
+use App\Http\controllers\Backend\Report\ResultReportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -202,19 +204,19 @@ Route::get('/attendance/employee/details/{date}', [EmployeeAttendanceController:
 //employee monthly salary
 
 // Employee Monthly Salary All Routes
-Route::get('monthly/salary/view', [MonthlySalaryController::class, 'MonthlySalaryView'])->name('employee.monthly.salary');
-Route::get('monthly/salary/get', [MonthlySalaryController::class, 'MonthlySalaryGet'])->name('employee.monthly.salary.get');
-Route::get('monthly/salary/payslip/{employee_id}', [MonthlySalaryController::class, 'MonthlySalaryPayslip'])->name('employee.monthly.salary.payslip');
+Route::get('/monthly/salary/view', [MonthlySalaryController::class, 'MonthlySalaryView'])->name('employee.monthly.salary');
+Route::get('/monthly/salary/get', [MonthlySalaryController::class, 'MonthlySalaryGet'])->name('employee.monthly.salary.get');
+Route::get('/monthly/salary/payslip/{employee_id}', [MonthlySalaryController::class, 'MonthlySalaryPayslip'])->name('employee.monthly.salary.payslip');
 });
 
 // marks Management Route
 Route::prefix('marks')->group(function(){
 // Mark entry route
 Route::get('/marks/entry/add',[MarksController::class, 'MarksAdd'])->name('marks.entry.add');
-Route::post('marks/entry/store', [MarksController::class, 'MarksStore'])->name('marks.entry.store');
-Route::get('marks/entry/edit', [MarksController::class, 'MarksEdit'])->name('marks.entry.edit');
-Route::get('marks/getstudents/edit', [MarksController::class, 'MarksEditGetStudents'])->name('student.edit.getstudents');
-Route::post('marks/entry/update', [MarksController::class, 'MarksUpdate'])->name('marks.entry.update');
+Route::post('/marks/entry/store', [MarksController::class, 'MarksStore'])->name('marks.entry.store');
+Route::get('/marks/entry/edit', [MarksController::class, 'MarksEdit'])->name('marks.entry.edit');
+Route::get('/marks/getstudents/edit', [MarksController::class, 'MarksEditGetStudents'])->name('student.edit.getstudents');
+Route::post('/marks/entry/update', [MarksController::class, 'MarksUpdate'])->name('marks.entry.update');
 //marks entry grade route
 Route::get('/marks/grade/view',[GradeController::class, 'MarksGradeView'])->name('marks.entry.grade');
 Route::get('/marks/grade/add',[GradeController::class, 'MarksGradeAdd'])->name('marks.grade.add');
@@ -256,6 +258,12 @@ Route::get('/monthly/profit/pdf',[ProfitController::class, 'MonthlyProfitPdf'])-
 //marksheet generate all route
 Route::get('/marksheet/generate/view',[MarkSheetController::class, 'MarkSheetView'])->name('marksheet.generate.view');
 Route::get('/marksheet/generate/get',[MarkSheetController::class, 'MarkSheetGet'])->name('report.marksheet.get');
+//attendance report all routes
+Route::get('/attendance/report/view',[AttendanceReportController::class, 'AttendanceReportView'])->name('attendance.report.view');
+Route::get('/report/attendance/get',[AttendanceReportController::class, 'AttendanceReportGet'])->name('report.attendance.get');
+// Student Result Report all routes
+Route::get('/student/result/view',[ResultReportController::class, 'ResultView'])->name('student.result.view');
+Route::get('/student/result/get',[ResultReportController::class, 'ResultGet'])->name('report.student.result.get');
 
 });
 });//end middleware auth route

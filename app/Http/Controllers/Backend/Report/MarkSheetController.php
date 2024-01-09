@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Backend\Report;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\StudentMarks;
@@ -9,7 +7,6 @@ use App\Models\ExamType;
 use App\Models\StudentClass;
 use App\Models\StudentYear;
 use App\Models\MarksGrade;
-
 class MarkSheetController extends Controller
 {
     public function MarkSheetView()
@@ -19,10 +16,8 @@ class MarkSheetController extends Controller
         $data['exam_types'] = ExamType::all();
         return view('backend.report.marksheet.marksheet_view', $data);
     }
-
     public function MarkSheetGet(Request $request)
     {
-
         $year_id = $request->year_id;
         $class_id = $request->class_id;
         $exam_type_id = $request->exam_type_id;
@@ -30,9 +25,7 @@ class MarkSheetController extends Controller
         $count_fail = StudentMarks::where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->where('marks', '<', '33')->get()->count();
         // dd($count_fail);
         $singleStudent = StudentMarks::where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->first();
-
         if ($singleStudent == true) {
-
             $allMarks = StudentMarks::with(['assign_subject', 'year'])->where('year_id', $year_id)->where('class_id', $class_id)->where('exam_type_id', $exam_type_id)->where('id_no', $id_no)->get();
             // dd($allMarks->toArray());
             $allGrades = MarksGrade::all();
@@ -42,7 +35,6 @@ class MarkSheetController extends Controller
                 'message' => 'Sorry These Criteria Does not match',
                 'alert-type' => 'error'
             );
-
             return redirect()->back()->with($notification);
         }
     } //end method
