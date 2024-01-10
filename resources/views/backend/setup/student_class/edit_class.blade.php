@@ -4,32 +4,20 @@
     <div class="content-wrapper">
         <div class="container-full">
             <!-- Content Header (Page header) -->
-
             <section class="content">
-
                 <!-- Basic Forms -->
                 <div class="box">
                     <div class="box-header with-border">
                         <h4 class="box-title">Edit Student Class</h4>
-
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action="{{ route('update.student.class',$editData->id) }}">
+                                <form method="post" action="{{ route('update.student.class', $editData->id) }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
-
-
-
-
-
-
-
-
-
                                             <div class="form-group">
                                                 <h5>Student Class Name<span class="text-danger">*</span></h5>
                                                 <div class="controls">
@@ -39,30 +27,14 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-
                                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                                         </div>
                                     </div>
-
                                     <div class="text-xs-right">
                                         <input href="" type="submit" class="btn btn-rounded btn-info"
                                             value="update">
                                     </div>
                                 </form>
-
                             </div>
                             <!-- /.col -->
                         </div>
@@ -71,10 +43,7 @@
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
-
             </section>
-
-
         </div>
     </div>
     <!-- /.content-wrapper -->

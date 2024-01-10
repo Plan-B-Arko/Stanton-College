@@ -47,21 +47,29 @@
                 <p>Addres: Dubai</p>
                 <p>Phone : +8801785332666</p>
                 <p>Email : support@stantonuniversitydubai.com</p>
-                <p> <b> Student Result Report</b> </p>
+                <p> <b> Student ID Card</b> </p>
             </td>
         </tr>
     </table>
-    <br>
-    <br>
-    <strong>Result of: </strong>{{ $allData['0']['exam_type']['name'] }}
-    <br>
-    <br>
-    <table id="customers">
-        <tr>
-            <th width="45%">Year / Session : {{ $allData['0']['year']['name'] }}</th>
-            <th width="45%">Class: {{ $allData['0']['student_class']['name'] }} </th>
-        </tr>
-    </table>
+    @foreach ($allData as $value)
+        <table id="customers">
+            <tr>
+                <td>IMAGE</td>
+                <td>STANTON UNIVERSITY</td>
+                <td> STUDENT ID CARD</td>
+            </tr>
+            <tr>
+                <td>Name : {{ $value['student']['name'] }} </td>
+                <td>Session : {{ $value['student_year']['name'] }} </td>
+                <td> Class : {{ $value['student_class']['name'] }} </td>
+            </tr>
+            <tr>
+                <td>Roll : {{ $value->roll }} </td>
+                <td>ID No : {{ $value['student']['id_no'] }}</td>
+                <td> Mobile : {{ $value['student']['mobile'] }}</td>
+            </tr>
+        </table>
+    @endforeach
     <br> <br>
     <i style="font-size: 10px; float: right;">Print Data : {{ date('d M Y') }}</i>
 </body>

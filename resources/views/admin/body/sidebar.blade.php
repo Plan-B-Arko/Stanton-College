@@ -50,8 +50,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $route == 'profile.view' ? 'active' : '' }}"><a
-                            href="{{ route('profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
+                    <li class="{{ $route == 'profile.view' ? 'active' : '' }}"><a href="{{ route('profile.view') }}"><i
+                                class="ti-more"></i>Your Profile</a></li>
                     <li class="{{ $route == 'password.view' ? 'active' : '' }}"><a
                             href="{{ route('password.view') }}"><i class="ti-more"></i>Change Password</a></li>
                 </ul>
@@ -185,6 +185,9 @@
                     </li>
                     <li class="{{ $route == 'student.result.view' ? 'active' : '' }}"><a
                             href="{{ route('student.result.view') }}"><i class="ti-more"></i>Student Result</a>
+                    </li>
+                    <li class="{{ $route == 'student.idcard.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.idcard.view') }}"><i class="ti-more"></i>Student Id Card</a>
                     </li>
                 </ul>
             </li>

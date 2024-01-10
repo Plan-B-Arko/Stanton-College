@@ -20,7 +20,6 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%">SL</th>
-
                                                 <th>Date</th>
                                                 <th>Amount</th>
                                                 <th>Description</th>
@@ -38,12 +37,12 @@
                                                     <td>
                                                         <img src="{{ !empty($value->image) ? url('upload/cost_images/' . $value->image) : url('upload/no_image.jpg') }}"
                                                             style="width: 70px; height: 50px;">
-
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('edit.other.cost', $value->id) }}"
                                                             class="btn btn-info">Edit</a>
-                                                        <a id="delete" href="{{ route('delete.other.cost', $value->id) }}"
+                                                        <a id="delete"
+                                                            href="{{ route('delete.other.cost', $value->id) }}"
                                                             class="btn btn-danger">Delete</a>
                                                     </td>
                                                 </tr>

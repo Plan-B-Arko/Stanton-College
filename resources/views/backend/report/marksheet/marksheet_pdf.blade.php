@@ -1,34 +1,24 @@
 @extends('admin.admin_master')
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <div class="content-wrapper">
         <div class="container-full">
             <!-- Content Header (Page header) -->
-
-
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-
-
                     <div class="col-12">
                         <div class="box bb-3 border-warning">
                             <div class="box-header">
                                 <h4 class="box-title">Manage <strong>MarkSheet PDF View</strong></h4>
                             </div>
-
                             <div class="box-body" style="border: solid 1px; padding: 10px;">
-
-
-
                                 <div class="row">{{-- ---------!1st row start --}}
                                     <div style="float: right;" class="col-md-2 text-center">
                                         <img src="{{ url('upload/stanton.jpg') }}" alt="university logo"
                                             style="width: 120px; height: 100px;">
                                     </div>
                                     <div class="col-md-2 text-center">
-
                                     </div>
                                     <div class="col-md-4 text-center" style="float: left;">
                                         <h4><strong>Stanton University Dubai</strong></h4>
@@ -42,10 +32,7 @@
                                     </div>
                                 </div>{{-- 1st row end --}}
                                 <div class="row"> <!-- start 2nd row -->
-
                                     <div class="col-md-6">
-
-
                                         <table border="1" style="border-color: #ffffff;" width="100%" cellpadding="8"
                                             cellspacing="2">
                                             @php
@@ -53,42 +40,29 @@
                                                     ->where('class_id', $allMarks['0']->class_id)
                                                     ->first();
                                             @endphp
-
                                             <tr>
                                                 <td width="50%">Student Id</td>
                                                 <td width="50%">{{ $allMarks['0']['id_no'] }}</td>
                                             </tr>
-
                                             <tr>
                                                 <td width="50%">Roll No</td>
                                                 <td width="50%">{{ $assign_student->roll }}</td>
                                             </tr>
-
                                             <tr>
                                                 <td width="50%">Name </td>
                                                 <td width="50%">{{ $allMarks['0']['student']['name'] }}</td>
                                             </tr>
-
-
                                             <tr>
                                                 <td width="50%">Class</td>
                                                 <td width="50%">{{ $allMarks['0']['student_class']['name'] }}</td>
                                             </tr>
-
-
                                             <tr>
                                                 <td width="50%">Session</td>
                                                 <td width="50%">{{ $allMarks['0']['year']['name'] }}</td>
                                             </tr>
-
                                         </table>
-
                                     </div> <!-- // end col md 6 -->
-
-
                                     <div class="col-md-6">
-
-
                                         <table border="1" style="border-color: #ffffff;" width="100%" cellpadding="8"
                                             cellspacing="2">
                                             <thead>
@@ -109,36 +83,27 @@
                                                     </tr>
                                                 @endforeach
                                             </tbody>
-
                                         </table>
-
                                     </div> <!-- // end col md 6 -->
-
                                 </div> <!--  end 2nd row -->
-
-
                                 <br><br>
                                 <div class="row"> <!-- 3td row start -->
                                     <div class="col-md-12">
-
                                         <table border="1" style="border-color: #ffffff;" width="100%" cellpadding="1"
                                             cellspacing="1">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">SL</th>
-
                                                     <th class="text-center">Get Marks</th>
                                                     <th class="text-center">Letter Grade</th>
                                                     <th class="text-center">Grade Point</th>
                                                 </tr>
                                             </thead>
-
                                             <tbody>
                                                 @php
                                                     $total_marks = 0;
                                                     $total_point = 0;
                                                 @endphp
-
                                                 @foreach ($allMarks as $key => $mark)
                                                     @php
                                                         $get_mark = $mark->marks;
@@ -152,9 +117,7 @@
                                                     @endphp
                                                     <tr>
                                                         <td class="text-center">{{ $key + 1 }}</td>
-
                                                         <td class="text-center">{{ $get_mark }}</td>
-
                                                         @php
                                                             $grade_marks = App\Models\MarksGrade::where([['start_marks', '<=', (int) $get_mark], ['end_marks', '>=', (int) $get_mark]])->first();
                                                             $grade_name = $grade_marks->grade_name;
@@ -163,38 +126,28 @@
                                                         @endphp
                                                         <td class="text-center">{{ $grade_name }}</td>
                                                         <td class="text-center">{{ $grade_point }}</td>
-
                                                     </tr>
                                                 @endforeach
-
                                                 <tr>
                                                     <td colspan="3"><strong style="padding-left: 30px;">Total
                                                             Maks</strong></td>
                                                     <td colspan="3"><strong
                                                             style="padding-left: 38px;">{{ $total_marks }}</strong></td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
-
                                     </div> <!-- // end Col md -12    -->
                                 </div> <!-- end 3td row start -->
-
                                 <br><br>
-
-
                                 <div class="row"> <!--  4th row start -->
                                     <div class="col-md-12">
-
                                         <table border="1" style="border-color: #ffffff;" width="100%" cellpadding="1"
                                             cellspacing="1">
                                             @php
                                                 $total_grade = 0;
                                                 $point_for_letter_grade = (float) $total_point / (float) $total_subject;
                                                 $total_grade = App\Models\MarksGrade::where([['start_point', '<=', $point_for_letter_grade], ['end_point', '>=', $point_for_letter_grade]])->first();
-
                                                 $grade_point_avg = (float) $total_point / (float) $total_subject;
-
                                             @endphp
                                             <tr>
                                                 <td width="50%"><strong>Grade Point Average</strong></td>
@@ -206,7 +159,6 @@
                                                     @endif
                                                 </td>
                                             </tr>
-
                                             <tr>
                                                 <td width="50%"><strong>Letter Grade </strong></td>
                                                 <td width="50%">
@@ -221,17 +173,12 @@
                                                 <td width="50%">Total Marks with Fraction</td>
                                                 <td width="50%"><strong>{{ $total_marks }}</strong></td>
                                             </tr>
-
                                         </table>
                                     </div>
                                 </div> <!--  End 4th row start -->
-
-
                                 <br><br>
-
                                 <div class="row"> <!--  5th row start -->
                                     <div class="col-md-12">
-
                                         <table border="1" style="border-color: #ffffff;" width="100%" cellpadding="1"
                                             cellspacing="1">
                                             <tbody>
@@ -244,45 +191,26 @@
                                                         @endif
                                                     </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
                                 </div> <!--  End 5th row start -->
-
-
                                 <br><br><br><br>
-
                                 <div class="row"> <!--  6th row start -->
                                     <div class="col-md-4">
                                         <hr style="border: solid 1px; widows: 60%; color: #ffffff; margin-bottom: -3px;">
                                         <div class="text-center">Teacher</div>
                                     </div>
-
                                     <div class="col-md-4">
                                         <hr style="border: solid 1px; widows: 60%; color: #ffffff; margin-bottom: -3px;">
                                         <div class="text-center">Parents / Guardian </div>
                                     </div>
-
                                     <div class="col-md-4">
                                         <hr style="border: solid 1px; widows: 60%; color: #ffffff; margin-bottom: -3px;">
                                         <div class="text-center">Principal / Headmaster</div>
                                     </div>
-
                                 </div> <!--  End 6th row start -->
-
-
                                 <br><br>
-
-
-
-
-
-
-
-
-
-
                                 <!-- 	------------------------------------------------		 -->
                             </div>
                             <!-- /.col -->
@@ -290,7 +218,6 @@
                         <!-- /.row -->
             </section>
             <!-- /.content -->
-
         </div>
     </div>
 @endsection

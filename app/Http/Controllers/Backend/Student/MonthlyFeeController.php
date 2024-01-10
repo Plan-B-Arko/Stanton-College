@@ -43,8 +43,6 @@ class MonthlyFeeController extends Controller
         $html['thsource'] .= '<th>Discount </th>';
         $html['thsource'] .= '<th>Student Fee </th>';
         $html['thsource'] .= '<th>Action</th>';
-
-
         foreach ($allStudent as $key => $v) {
             $registrationfee = FeeCategoryAmount::where('fee_category_id', '2')->where('class_id', $v->class_id)->first();
             $color = 'success';
@@ -54,12 +52,10 @@ class MonthlyFeeController extends Controller
             $html[$key]['tdsource'] .= '<td>' . $v->roll . '</td>';
             $html[$key]['tdsource'] .= '<td>' . $registrationfee->amount . '</td>';
             $html[$key]['tdsource'] .= '<td>' . $v['discount']['discount'] . '%' . '</td>';
-
             $originalfee = $registrationfee->amount;
             $discount = $v['discount']['discount'];
             $discounttablefee = $discount / 100 * $originalfee;
             $finalfee = (float)$originalfee - (float)$discounttablefee;
-
             $html[$key]['tdsource'] .= '<td>' . $finalfee . '$' . '</td>';
             $html[$key]['tdsource'] .= '<td>';
             $html[$key]['tdsource'] .= '<a class="btn btn-sm btn-' . $color . '" title="PaySlip" target="_blanks" href="' . route("student.monthly.fee.payslip") . '?class_id=' . $v->class_id . '&student_id=' . $v->student_id . '&month=' . $request->month . ' ">Fee Slip</a>';
@@ -67,17 +63,12 @@ class MonthlyFeeController extends Controller
         }
         return response()->json(@$html);
     } // end method
-
-
-
     public function MonthlyFeePayslip(Request $request)
     {
         $student_id = $request->student_id;
         $class_id = $request->class_id;
         $data['month'] = $request->month;
-
         $data['details'] = AssignStudent::with(['student', 'discount'])->where('student_id', $student_id)->where('class_id', $class_id)->first();
-
         $pdf = Pdf::loadView('backend.student.monthly_fee.monthly_fee_pdf', $data);
         //    $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('document.pdf');

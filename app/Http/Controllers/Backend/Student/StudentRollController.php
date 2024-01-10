@@ -16,18 +16,14 @@ class StudentRollController extends Controller
         $data['classes'] = StudentClass::all();
         return view('backend.student.roll_generate.roll_generate_view', $data);
     }
-
     public function GetStudents(Request $request)
     {
-        // dd('ok done');
         $allData = AssignStudent::with(['student'])->where('year_id', $request->year_id)->where('class_id', $request->class_id)->get();
         // dd($allData->toArray());
         return response()->json($allData);
     }
-
     public function StudentRollStore(Request $request)
     {
-
         $year_id = $request->year_id;
         $class_id = $request->class_id;
         if ($request->student_id != null) {
@@ -39,15 +35,12 @@ class StudentRollController extends Controller
                 'message' => 'Sorry there are no student',
                 'alert-type' => 'error'
             );
-
             return redirect()->back()->with($notification);
         } // End IF Condition
-
         $notification = array(
             'message' => 'Well Done Roll Generated Successfully',
             'alert-type' => 'success'
         );
-
         return redirect()->route('roll.generate.view')->with($notification);
     } // end Method
 }

@@ -19,16 +19,17 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class GradeController extends Controller
 {
-    public function MarksGradeView(){
+    public function MarksGradeView()
+    {
         $data['allData'] = MarksGrade::all();
-        return view('backend.marks.grade_marks_view',$data);
+        return view('backend.marks.grade_marks_view', $data);
     }
-
-    public function MarksGradeAdd(){
+    public function MarksGradeAdd()
+    {
         return view('backend.marks.grade_marks_add');
     }
-
-    public function MarksGradeStore(Request $request){
+    public function MarksGradeStore(Request $request)
+    {
         $data = new MarksGrade();
         $data->grade_name = $request->grade_name;
         $data->grade_point = $request->grade_point;
@@ -40,17 +41,17 @@ class GradeController extends Controller
         $data->save();
         $notification = array(
             'message' => 'Grade Marks Inserted Successfully',
-            'alert-type'=> 'success',
+            'alert-type' => 'success',
         );
         return redirect()->route('marks.entry.grade')->with($notification);
-    }//end methode
-
-    public function MarksGradeEdit($id){
+    } //end methode
+    public function MarksGradeEdit($id)
+    {
         $data['editData'] = MarksGrade::find($id);
-        return view('backend.marks.grade_marks_edit',$data);
+        return view('backend.marks.grade_marks_edit', $data);
     }
-
-    public function MarksGradeUpdate(Request $request, $id){
+    public function MarksGradeUpdate(Request $request, $id)
+    {
         $data = MarksGrade::find($id);
         $data->grade_name = $request->grade_name;
         $data->grade_point = $request->grade_point;
@@ -62,9 +63,8 @@ class GradeController extends Controller
         $data->save();
         $notification = array(
             'message' => 'Grade Marks Updated Successfully',
-            'alert-type'=> 'success',
+            'alert-type' => 'success',
         );
         return redirect()->route('marks.entry.grade')->with($notification);
-
     }
 }

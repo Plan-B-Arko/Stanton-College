@@ -34,19 +34,14 @@
 </head>
 
 <body>
-
-
     <table id="customers">
         <tr>
             <td>
                 <h2>
                     <?php $image_path = '/upload/stanton.jpg'; ?>
                     <img src="{{ public_path() . $image_path }}" width="300" height="200">
-
                 </h2>
             </td>
-
-
             <td>
                 <h2>STANTON UNIVERSITY ERP</h2>
                 <p>Addres: Dubai</p>
@@ -55,9 +50,7 @@
                 <p> <b> Student Monthly Fee</b> </p>
             </td>
         </tr>
-
     </table>
-
     @php
         $registrationfee = App\Models\FeeCategoryAmount::where('fee_category_id', '2')
             ->where('class_id', $details->class_id)
@@ -66,9 +59,7 @@
         $discount = $details['discount']['discount'];
         $discounttablefee = ($discount / 100) * $originalfee;
         $finalfee = (float) $originalfee - (float) $discounttablefee;
-
     @endphp
-
     <table id="customers">
         <tr>
             <th width="10%">Sl</th>
@@ -85,13 +76,11 @@
             <td><b>Roll No</b></td>
             <td>{{ $details->roll }}</td>
         </tr>
-
         <tr>
             <td>3</td>
             <td><b>Student Name</b></td>
             <td>{{ $details['student']['name'] }}</td>
         </tr>
-
         <tr>
             <td>4</td>
             <td><b>Father's Name</b></td>
@@ -117,19 +106,14 @@
             <td><b>Discount Fee </b></td>
             <td>{{ $discount }} %</td>
         </tr>
-
         <tr>
             <td>9</td>
             <td><b>Fee For this Student of {{ $month }} </b></td>
             <td>{{ $finalfee }} $</td>
         </tr>
-
-
-
     </table>
     <br> <br>
     <i style="font-size: 10px; float: right;">Print Data : {{ date('d M Y') }}</i>
-
 </body>
 
 </html>

@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeeAttendance extends Model
 {
-    public function user(){
-        return $this->belongsto(User::class,'employee_id','id');
+    public function user()
+    {
+        return $this->belongsto(User::class, 'employee_id', 'id');
     }
 }
