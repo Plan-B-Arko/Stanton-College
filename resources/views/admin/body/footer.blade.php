@@ -5,9 +5,9 @@
                 <a class="nav-link" href="javascript:void(0)">FAQ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Stanton University Dubai</a>
+                <a class="nav-link" href="#">Stanton College Dubai</a>
             </li>
         </ul>
     </div>
-    &copy; 2020 <a href="#">Made by Stanton University</a>. All Rights Reserved.
+    &copy; 2020 <a href="#">Made by Stanton College</a>. All Rights Reserved.
 </footer>

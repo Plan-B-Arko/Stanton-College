@@ -125,7 +125,16 @@
                                                 </div> <!-- End Col md 4 -->
                                             </div> <!-- End 3rd Row -->
                                             <div class="row"> <!-- 4TH Row -->
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <h5>Email <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="email" name="email" class="form-control"
+                                                                required="">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 3 -->
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Salary <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -134,7 +143,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 3 -->
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Joining Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -143,7 +152,10 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 3 -->
-                                                <div class="col-md-3">
+
+                                            </div> <!-- End 4TH Row -->
+                                            <div class="row">{{-- start 5Th Row --}}
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Profile Image <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -152,7 +164,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 3 -->
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
@@ -160,7 +172,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 3 -->
-                                            </div> <!-- End 4TH Row -->
+                                            </div>{{-- end 5th row --}}
                                             <div class="text-xs-right">
                                                 <input type="submit" class="btn btn-rounded btn-info mb-5"
                                                     value="Submit">

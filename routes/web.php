@@ -49,9 +49,15 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/', function () {
         return view('auth.login');
     });
+    // admin dashboard
     Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
         return view('admin.index');
     })->name('dashboard');
+// student dashboard
+    Route::middleware(['auth:sanctum,web', 'verified'])->get('/student_dashboard', function () {
+        return view('student_dashboard.index');
+    })->name('student.dashboard');
+
     Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
     Route::group(['middleware' => 'auth'], function () {
         // User Management route start

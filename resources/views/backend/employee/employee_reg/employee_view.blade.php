@@ -23,6 +23,8 @@
                                                 <th>Name</th>
                                                 <th>ID NO</th>
                                                 <th>Mobile</th>
+                                                <th>Email</th>
+                                                <th>Designation</th>
                                                 <th>Gender</th>
                                                 <th>Join Date</th>
                                                 <th>Salary</th>
@@ -39,6 +41,8 @@
                                                     <td> {{ $employee->name }}</td>
                                                     <td> {{ $employee->id_no }}</td>
                                                     <td> {{ $employee->mobile }}</td>
+                                                    <td> {{ $employee->email }}</td>
+                                                    <td> {{ $employee['designation']['name'] }}</td>
                                                     <td> {{ $employee->gender }}</td>
                                                     <td> {{ $employee->join_date }}</td>
                                                     <td> {{ $employee->salary }}</td>

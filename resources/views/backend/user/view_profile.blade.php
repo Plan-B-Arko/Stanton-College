@@ -18,9 +18,11 @@
                                 <h6 class="widget-user-desc">User Email : {{ $user->email }}</h6>
                             </div>
                             <div class="widget-user-image">
-                                <img class="rounded-circle"
-                                    src="{{ !empty($user->image) ? url('upload/user_images/' . $user->image) : url('upload/no_image.jpg') }}"
-                                    alt="User Avatar">
+                               
+                                    <img class="rounded-circle"
+                                        src="{{ !empty($user->image) ? url('upload/user_images/' . $user->image) : url('upload/no_image.jpg') }}"
+                                        alt="User Avatar">
+
                             </div>
                             <div class="box-footer">
                                 <div class="row">

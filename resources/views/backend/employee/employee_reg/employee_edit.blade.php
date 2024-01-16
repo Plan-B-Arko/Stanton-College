@@ -124,7 +124,7 @@
                                                             <select name="designation_id" required=""
                                                                 class="form-control">
                                                                 <option value="" selected="" disabled="">
-                                                                    Select Year</option>
+                                                                    Select Designation</option>
                                                                 @foreach ($designation as $desi)
                                                                     <option value="{{ $desi->id }}"
                                                                         {{ $editData->designation_id == $desi->id ? 'selected' : '' }}>
@@ -137,7 +137,7 @@
                                             </div> <!-- End 3rd Row -->
                                             <div class="row"> <!-- 4TH Row -->
                                                 {{-- @if (!@editData) --}}
-                                                @if (!@isset($editData))
+                                                {{-- @if (!@isset($editData))
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <h5>Salary <span class="text-danger">*</span></h5>
@@ -147,8 +147,17 @@
                                                             </div>
                                                         </div>
                                                     </div> <!-- End Col md 3 -->
-                                                @endisset
+                                                @endisset --}}
                                                 {{-- @endif --}}
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <h5>Email<span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="email" name="email" class="form-control"
+                                                                required="" value="{{ $editData->email }}">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
                                                 @if (!@isset($editData))
                                                     {{-- @if (!@editData) --}}
                                                     <div class="col-md-3">

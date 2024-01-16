@@ -54,7 +54,7 @@ class EmployeeRegController extends Controller
                 } elseif ($employeeId < 1000) {
                     $id_no = '0' . $employeeId;
                 }
-            } // end else 
+            } // end else
             $final_id_no = $checkYear . $id_no;
             $user = new User();
             $code = rand(0000, 9999);
@@ -66,11 +66,21 @@ class EmployeeRegController extends Controller
             $user->fname = $request->fname;
             $user->mname = $request->mname;
             $user->mobile = $request->mobile;
+            $user->email = $request->email;
             $user->address = $request->address;
             $user->gender = $request->gender;
             $user->religion = $request->religion;
             $user->salary = $request->salary;
             $user->designation_id = $request->designation_id;
+            if ($request->designation_id == "2") {
+                $user->role = "Teacher";
+            }
+            if ($request->designation_id == "3") {
+                $user->role = "Teacher";
+            }
+            if ($request->designation_id == "4") {
+                $user->role = "Teacher";
+            }
             $user->dob = date('Y-m-d', strtotime($request->dob));
             $user->join_date = date('Y-m-d', strtotime($request->join_date));
             if ($request->file('image')) {
@@ -107,10 +117,20 @@ class EmployeeRegController extends Controller
         $user->fname = $request->fname;
         $user->mname = $request->mname;
         $user->mobile = $request->mobile;
+        $user->email = $request->email;
         $user->address = $request->address;
         $user->gender = $request->gender;
         $user->religion = $request->religion;
         $user->designation_id = $request->designation_id;
+        if ($request->designation_id == "2") {
+            $user->role = "Teacher";
+        }
+        if ($request->designation_id == "3") {
+            $user->role = "Teacher";
+        }
+        if ($request->designation_id == "4") {
+            $user->role = "Teacher";
+        }
         $user->dob = date('Y-m-d', strtotime($request->dob));
         if ($request->file('image')) {
             $file = $request->file('image');

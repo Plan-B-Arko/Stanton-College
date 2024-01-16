@@ -60,6 +60,15 @@
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <h5>Email <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="email" name="email" class="form-control"
+                                                                required="">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <h5>Address <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" name="address" class="form-control"
@@ -67,20 +76,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Gender <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="gender" id="gender" required=""
-                                                                class="form-control">
-                                                                <option value="" selected="" disabled="">Select
-                                                                    Gender</option>
-                                                                <option value="Male">Male</option>
-                                                                <option value="Female">Female</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
+                                            
                                             </div> <!-- End 2nd Row -->
                                             <div class="row"> <!-- 3rd Row -->
                                                 <div class="col-md-4">
@@ -167,6 +163,20 @@
                                             <div class="row"> <!-- 5TH Row -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <h5>Gender <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="gender" id="gender" required=""
+                                                                class="form-control">
+                                                                <option value="" selected="" disabled="">Select
+                                                                    Gender</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <h5>Shift <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <select name="shift_id" required="" class="form-control">
@@ -180,7 +190,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <h5>Profile Image <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -189,7 +199,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
+                                                <div class="col-md-1">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <img id="showImage" src="{{ url('upload/no_image.jpg') }}"

@@ -77,11 +77,13 @@ class StudentRegController extends Controller
             $user->id_no = $final_id_no;
             $user->password = bcrypt($code);
             $user->usertype = 'Student';
+            $user->role = 'Student';
             $user->code = $code;
             $user->name = $request->name;
             $user->fname = $request->fname;
             $user->mname = $request->mname;
             $user->mobile = $request->mobile;
+            $user->email = $request->email;
             $user->address = $request->address;
             $user->gender = $request->gender;
             $user->religion = $request->religion;
@@ -130,6 +132,7 @@ class StudentRegController extends Controller
             $user->fname = $request->fname;
             $user->mname = $request->mname;
             $user->mobile = $request->mobile;
+            $user->email = $request->email;
             $user->address = $request->address;
             $user->gender = $request->gender;
             $user->religion = $request->religion;
@@ -175,6 +178,7 @@ class StudentRegController extends Controller
             $user->fname = $request->fname;
             $user->mname = $request->mname;
             $user->mobile = $request->mobile;
+            $user->email = $request->email;
             $user->address = $request->address;
             $user->gender = $request->gender;
             $user->religion = $request->religion;
