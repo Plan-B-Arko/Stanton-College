@@ -25,7 +25,7 @@
                                                 <th>Mobile</th>
                                                 <th>Email</th>
                                                 <th>Designation</th>
-                                                <th>Gender</th>
+                                                {{-- <th>Gender</th> --}}
                                                 <th>Join Date</th>
                                                 <th>Salary</th>
                                                 @if (Auth::user()->role == 'Admin')
@@ -43,22 +43,26 @@
                                                     <td> {{ $employee->mobile }}</td>
                                                     <td> {{ $employee->email }}</td>
                                                     <td> {{ $employee['designation']['name'] }}</td>
-                                                    <td> {{ $employee->gender }}</td>
+                                                    {{-- <td> {{ $employee->gender }}</td> --}}
                                                     <td> {{ $employee->join_date }}</td>
                                                     <td> {{ $employee->salary }}</td>
                                                     @if (Auth::user()->role == 'Admin')
                                                         <td> {{ $employee->code }}</td>
                                                     @endif
                                                     <td>
-                                                        <a href="{{ route('employee.registration.edit', $employee->id) }}"
-                                                            class="btn btn-info">Edit</a>
-                                                        <a target="_blank"
+                                                        <a title="Edit" href="{{ route('employee.registration.edit', $employee->id) }}"
+                                                            class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                        <a target="_blank" title="Details"
                                                             href="{{ route('employee.registration.details', $employee->id) }}"
-                                                            class="btn btn-danger">Details</a>
+                                                            class="btn btn-danger"><i class="fa fa-eye"></i></a>
+                                                     
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
+
+
+                                        
                                         <tfoot>
                                         </tfoot>
                                     </table>

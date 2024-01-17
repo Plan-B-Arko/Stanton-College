@@ -18,14 +18,16 @@
             </div>
         </div>
         <!-- sidebar menu-->
+
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="treeview {{ $route == 'dashboard' ? 'active' : '' }} ">
-                <a href="{{ route('dashboard') }}">
+            @if (Auth::user()->role == 'Admin')
+            <li class="{{ $route == 'admin.dashboard' ? 'active' : '' }} ">
+                <a href="{{ route('admin.dashboard') }}">
                     <i data-feather="pie-chart"></i>
-                    <span>Dashboard</span>
+                    <span> Admin Dashboard</span>
                 </a>
             </li>
-            @if (Auth::user()->role == 'Admin')
+
                 <li class="treeview {{ $prefix == '/users' ? 'active' : '' }} ">
                     <a href="#">
                         <i data-feather="message-circle"></i>
@@ -56,6 +58,8 @@
                             href="{{ route('password.view') }}"><i class="ti-more"></i>Change Password</a></li>
                 </ul>
             </li>
+            @if (Auth::user()->role == 'Admin')
+
             <li class="treeview {{ $prefix == '/setups' ? 'active' : '' }} ">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Setup Management</span>
@@ -191,6 +195,7 @@
                     </li>
                 </ul> --}}
             </li>
+            @endif
         </ul>
     </section>
     <div class="sidebar-footer">

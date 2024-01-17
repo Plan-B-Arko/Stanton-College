@@ -16,8 +16,9 @@ class LoginResponse implements LoginResponseContract
             ? response()->json(['two_factor' => false])
             : redirect()->intended(
                 match ($role) {
-                    'Admin' => '/dashboard',
+                    'Admin' => '/admin_dashboard',
                     'Student' => '/student_dashboard',
+                    'Teacher' => '/teacher_dashboard',
                     default => '/',
                 }
 

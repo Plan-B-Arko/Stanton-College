@@ -86,7 +86,7 @@ class EmployeeRegController extends Controller
             if ($request->file('image')) {
                 $file = $request->file('image');
                 $filename = date('YmdHi') . $file->getClientOriginalName();
-                $file->move(public_path('upload/employee_images'), $filename);
+                $file->move(public_path('upload/user_images'), $filename);
                 $user['image'] = $filename;
             }
             $user->save();
@@ -134,9 +134,9 @@ class EmployeeRegController extends Controller
         $user->dob = date('Y-m-d', strtotime($request->dob));
         if ($request->file('image')) {
             $file = $request->file('image');
-            @unlink(public_path('upload/employee_images/' . $user->image));
+            @unlink(public_path('upload/user_images/' . $user->image));
             $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/employee_images'), $filename);
+            $file->move(public_path('upload/user_images'), $filename);
             $user['image'] = $filename;
         }
         $user->save();

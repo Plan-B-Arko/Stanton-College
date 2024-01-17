@@ -97,7 +97,7 @@
                                                             <td> {{ $value['student_year']['name'] }}</td>
                                                             <td> {{ $value['student_class']['name'] }}</td>
                                                             <td>
-                                                                <img src="{{ !empty($value['student']['image']) ? url('upload/student_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
+                                                                <img src="{{ !empty($value['student']['image']) ? url('upload/user_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
                                                                     style="width: 60px; width: 60px;">
                                                             </td>
                                                             <td> {{ $value['student']['code'] }}</td>
@@ -147,7 +147,7 @@
                                                             <td> {{ $value['student_year']['name'] }}</td>
                                                             <td> {{ $value['student_class']['name'] }}</td>
                                                             <td>
-                                                                <img src="{{ !empty($value['student']['image']) ? url('upload/student_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
+                                                                <img src="{{ !empty($value['student']['image']) ? url('upload/user_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
                                                                     style="width: 60px; width: 60px;">
                                                             </td>
                                                             <td> {{ $value['student']['code'] }}</td>
