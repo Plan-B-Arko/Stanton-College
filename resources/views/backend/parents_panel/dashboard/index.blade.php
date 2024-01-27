@@ -63,7 +63,7 @@
                     </div>
                     {{-- start own code for teacher dashboard --}}
                     <div>
-                        <h1>Student dashboard</h1>
+                        <h1>Parents dashboard</h1>
                     </div>
                     {{-- end own code for teacher dashboard --}}
                 </div>

@@ -152,4 +152,5 @@ class EmployeeRegController extends Controller
         $pdf = Pdf::loadView('backend.employee.employee_reg.employee_details_pdf', $data);
         return $pdf->stream('document.pdf');
     }
+
 }

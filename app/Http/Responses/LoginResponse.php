@@ -19,11 +19,11 @@ class LoginResponse implements LoginResponseContract
                     'Admin' => '/admin_dashboard',
                     'Student' => '/student_dashboard',
                     'Teacher' => '/teacher_dashboard',
-                    default => '/',
+                    'Parents' => '/parents_dashboard',
+                    default => '/login',
                 }
-
-
-
             );
     }
 }
+
+

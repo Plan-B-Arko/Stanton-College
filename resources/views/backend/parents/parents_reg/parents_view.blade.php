@@ -9,9 +9,9 @@
                     <div class="col-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Employee List</h3>
-                                <a href="{{ route('employee.registration.add') }}" style="float: right;"
-                                    class="btn btn-rounded btn-dark mb-5"> Add Employee</a>
+                                <h3 class="box-title">Parents List</h3>
+                                <a href="{{ route('parents.registration.add') }}" style="float: right;"
+                                    class="btn btn-rounded btn-success mb-5"> Add Parents</a>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -21,13 +21,12 @@
                                             <tr>
                                                 <th width="5%">SL</th>
                                                 <th>Name</th>
-                                                <th>ID NO</th>
+                                                <th>Image</th>
                                                 <th>Mobile</th>
                                                 <th>Email</th>
-                                                <th>Designation</th>
-                                                {{-- <th>Gender</th> --}}
-                                                <th>Join Date</th>
-                                                <th>Salary</th>
+                                                <th>Occupation</th>
+                                                <th>Gender</th>
+                                                <th>Date of Birth</th>
                                                 @if (Auth::user()->role == 'Admin')
                                                     <th>Code</th>
                                                 @endif
@@ -35,26 +34,28 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($allData as $key => $employee)
+                                            @foreach ($allData as $key => $parents)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td> {{ $employee->name }}</td>
-                                                    <td> {{ $employee->id_no }}</td>
-                                                    <td> {{ $employee->mobile }}</td>
-                                                    <td> {{ $employee->email }}</td>
-                                                    <td> {{ $employee['designation']['name'] }}</td>
-                                                    {{-- <td> {{ $employee->gender }}</td> --}}
-                                                    <td> {{ $employee->join_date }}</td>
-                                                    <td> {{ $employee->salary }}</td>
+                                                    <td> {{ $parents->name }}</td>
+                                                    <td>
+                                                        <img src="{{ !empty($parents->image) ? url('upload/user_images/' . $parents->image) : url('upload/no_image.jpg') }}"
+                                                            style="width: 60px; width: 60px;">
+                                                    </td>
+                                                    <td> {{ $parents->mobile }}</td>
+                                                    <td> {{ $parents->email }}</td>
+                                                    <td> {{ $parents->occupation }}</td>
+                                                    <td> {{ $parents->gender }}</td>
+                                                    <td> {{ $parents->dob }}</td>
                                                     @if (Auth::user()->role == 'Admin')
-                                                        <td> {{ $employee->code }}</td>
+                                                        <td> {{ $parents->code }}</td>
                                                     @endif
                                                     <td>
-                                                        <a title="Edit" href="{{ route('employee.registration.edit', $employee->id) }}"
-                                                            class = "btn btn-info"><i class="fa fa-edit"></i></a>
-                                                        <a target="_blank" title="Details"
-                                                            href="{{ route('employee.registration.details', $employee->id) }}"
-                                                            class="btn btn-primary" ><i class="fa fa-eye"></i></a>
+                                                        <a title="Edit" href="{{ route('parents.registration.edit', $parents->id) }}"
+                                                            class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                        <a title="Delete" href="{{ route('parents.registration.delete', $parents->id) }}"
+                                                            class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                       
 
                                                     </td>
                                                 </tr>

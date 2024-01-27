@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignStudent extends Model
+class AssignTeacher extends Model
 {
-    public function student()
+    public function teacher()
     {
-        return $this->belongsTo(User::class, 'student_id', 'id');
-    }
-    public function discount()
-    {
-        return $this->belongsTo(DiscountStudent::class, 'id', 'assign_student_id');
+        return $this->belongsTo(User::class, 'teacher_id', 'id');
     }
     public function student_class()
     {
@@ -31,7 +27,5 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(StudentShift::class, 'shift_id', 'id');
     }
-    public function assignedSubjects(){
-        return $this->hasMany(AssignSubject::class,'class_id', 'class_id');
-    }
+
 }

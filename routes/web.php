@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
+use App\Http\Controllers\Backend\Employee\AssignTeacherController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
@@ -34,6 +35,7 @@ use App\Http\controllers\Backend\Report\ProfitController;
 use App\Http\controllers\Backend\Report\MarkSheetController;
 use App\Http\controllers\Backend\Report\AttendanceReportController;
 use App\Http\controllers\Backend\Report\ResultReportController;
+use App\Http\controllers\Backend\Parents\ParentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,14 +55,15 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::middleware(['auth:sanctum,web', 'verified'])->get('/admin_dashboard', function () {
         return view('admin.index');
     })->name('admin.dashboard');
-// student dashboard
-    Route::middleware(['auth:sanctum,web', 'verified'])->get('/student_dashboard', function () {
-        return view('backend.student_panel.dashboard.index');
-    })->name('student.dashboard');
+
 // teacher dashboard
     Route::middleware(['auth:sanctum,web', 'verified'])->get('/teacher_dashboard', function () {
         return view('backend.teacher_panel.dashboard.index');
     })->name('teacher.dashboard');
+// parents dashboard
+    Route::middleware(['auth:sanctum,web', 'verified'])->get('/parents_dashboard', function () {
+        return view('backend.parents_panel.dashboard.index');
+    })->name('parents.dashboard');
 
     Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
     Route::group(['middleware' => 'auth'], function () {
@@ -182,6 +185,17 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('/exam/fee/classwisedata', [ExamFeeController::class, 'ExamFeeClassData'])->name('student.exam.fee.classwise.get');
             Route::get('/exam/fee/payslip', [ExamFeeController::class, 'ExamFeePayslip'])->name('student.exam.fee.payslip');
         });
+        // parents all route
+        Route::prefix('/parents')->group(function(){
+            // parents add all route
+            Route::get('/reg/view', [ParentsController::class, 'ParentsView'])->name('parents.registration.view');
+            Route::get('/reg/add', [ParentsController::class, 'ParentsAdd'])->name('parents.registration.add');
+            Route::post('/reg/store', [ParentsController::class, 'ParentsStore'])->name('store.parents.registration');
+            Route::get('/reg/edit/{id}', [ParentsController::class, 'ParentsEdit'])->name('parents.registration.edit');
+            Route::post('/reg/update/{id}', [ParentsController::class, 'ParentsUpdate'])->name('update.parents.registration');
+            Route::get('/reg/details/delete/{id}', [ParentsController::class, 'ParentsDelete'])->name('parents.registration.delete');
+
+        });
         // employee route
         Route::prefix('/employees')->group(function () {
             //employee registration all route
@@ -215,9 +229,17 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('/monthly/salary/get', [MonthlySalaryController::class, 'MonthlySalaryGet'])->name('employee.monthly.salary.get');
             Route::get('/monthly/salary/payslip/{employee_id}', [MonthlySalaryController::class, 'MonthlySalaryPayslip'])->name('employee.monthly.salary.payslip');
         });
+        Route::prefix('/teacher/assign')->group(function(){
+            Route::get('/view', [AssignTeacherController::class, 'AssignTeacherView'])->name('teacher.assign.view');
+            Route::get('/add', [AssignTeacherController::class, 'AssignTeacherAdd'])->name('teacher.assign.add');
+            Route::post('/store', [AssignTeacherController::class, 'AssignTeacherStore'])->name('teacher.assign.store');
+            Route::get('/edit/{class_id}', [AssignTeacherController::class, 'AssignTeacherEdit'])->name('teacher.assign.edit');
+            Route::post('/update/{class_id}', [AssignTeacherController::class, 'AssignTeacherUpdate'])->name('teacher.assign.update');
+            Route::get('/details/{class_id}', [AssignTeacherController::class, 'AssignTeacherDetails'])->name('teacher.assign.details');
+        });
         // marks Management Route
         Route::prefix('/marks')->group(function () {
-            // Mark entry route
+            // Mark entry route.
             Route::get('/marks/entry/add', [MarksController::class, 'MarksAdd'])->name('marks.entry.add');
             Route::post('/marks/entry/store', [MarksController::class, 'MarksStore'])->name('marks.entry.store');
             Route::get('/marks/entry/edit', [MarksController::class, 'MarksEdit'])->name('marks.entry.edit');
