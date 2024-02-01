@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('religion')->nullable();
             $table->string('id_no')->nullable();
             $table->date('dob')->nullable();
+            $table->string('blood_group')->nullable();
             $table->string('code')->nullable();
             $table->string('role')->nullable()->comment('admin=head of sotware,operator=computer operator,user=employee');
             $table->date('join_date')->nullable();

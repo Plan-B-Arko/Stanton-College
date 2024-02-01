@@ -27,6 +27,18 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(StudentGroup::class, 'group_id', 'id');
     }
+    public function student_batch()
+    {
+        return $this->belongsTo(StudentBatch::class, 'batch_id', 'id');
+    }
+    public function student_semester()
+    {
+        return $this->belongsTo(StudentSemester::class, 'semester_id', 'id');
+    }
+    public function student_Month()
+    {
+        return $this->belongsTo(StudentMonth::class, 'month_id', 'id');
+    }
     public function shift()
     {
         return $this->belongsTo(StudentShift::class, 'shift_id', 'id');

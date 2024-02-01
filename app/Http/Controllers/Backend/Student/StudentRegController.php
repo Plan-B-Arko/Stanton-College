@@ -11,6 +11,9 @@ use App\Models\StudentYear;
 use App\Models\StudentClass;
 use App\Models\StudentGroup;
 use App\Models\StudentShift;
+use App\Models\StudentMonth;
+use App\Models\StudentSemester;
+use App\Models\StudentBatch;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -43,6 +46,9 @@ class StudentRegController extends Controller
         $data['classes'] = StudentClass::all();
         $data['groups'] = StudentGroup::all();
         $data['shifts'] = StudentShift::all();
+        $data['batches'] = StudentBatch::all();
+        $data['months'] = StudentMonth::all();
+        $data['semesters'] = StudentSemester::all();
         return view('backend.student.student_reg.student_add', $data);
     }
     public function StudentRegStore(Request $request)
@@ -86,6 +92,7 @@ class StudentRegController extends Controller
             $user->email = $request->email;
             $user->address = $request->address;
             $user->gender = $request->gender;
+            $user->blood_group = $request->blood_group;
             $user->religion = $request->religion;
             $user->dob = date('Y-m-d', strtotime($request->dob));
             if ($request->file('image')) {
@@ -136,6 +143,7 @@ class StudentRegController extends Controller
             $user->address = $request->address;
             $user->gender = $request->gender;
             $user->religion = $request->religion;
+            $user->blood_group = $request->blood_group;
             $user->dob = date('Y-m-d', strtotime($request->dob));
             if ($request->file('image')) {
                 $file = $request->file('image');

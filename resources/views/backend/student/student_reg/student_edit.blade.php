@@ -200,6 +200,27 @@
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <h5>Blood Group <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="blood_group" id="blood_group" required=""
+                                                            class="form-control">
+                                                            <option value="" selected="" disabled="">Select
+                                                                Blood Group</option>
+
+                                                                <option value="A+"{{ $editData['student']['blood_group'] == 'A+' ? 'selected' : '' }}>A+</option>
+                                                                <option value="A-"{{ $editData['student']['blood_group'] == 'A-' ? 'selected' : '' }}>A-</option>
+                                                                <option value="B+"{{ $editData['student']['blood_group'] == 'B+' ? 'selected' : '' }}>B+</option>
+                                                                <option value="B-"{{ $editData['student']['blood_group'] == 'B-' ? 'selected' : '' }}>B-</option>
+                                                                <option value="AB+"{{ $editData['student']['blood_group'] == 'AB+' ? 'selected' : '' }}>AB+</option>
+                                                                <option value="AB-"{{ $editData['student']['blood_group'] == 'AB-' ? 'selected' : '' }}>AB-</option>
+                                                                <option value="O+"{{ $editData['student']['blood_group'] == 'O+' ? 'selected' : '' }}>O+</option>
+                                                                <option value="O-"{{ $editData['student']['blood_group'] == 'O-' ? 'selected' : '' }}>O-</option>
+                                                        </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
                                                         <h5>Profile Image <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="file" name="image" class="form-control"
@@ -207,7 +228,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
+                                                <div class="col-md-1">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <img id="showImage"

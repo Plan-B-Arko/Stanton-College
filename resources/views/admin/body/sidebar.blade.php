@@ -45,6 +45,31 @@
                 </li>
             @endif
             {{-- student siderber end --}}
+            {{-- Teacher sideber start --}}
+            @if (Auth::user()->role == 'Teacher')
+              <li class="{{ $route == 'teacher.dashboard' ? 'active' : '' }} ">
+                <a href="{{ route('teacher.dashboard') }}">
+                    <i data-feather="pie-chart"></i>
+                    <span> Teacher Dashboard</span>
+                </a>
+            </li>
+
+                <li class="treeview {{ $prefix == '/teacher/portal' ? 'active' : '' }} ">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>Study Material</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    {{-- <ul class="treeview-menu">
+                        <li class="{{ $route == 'mysubject.view' ? 'active' : '' }}"><a href="{{ route('mysubject.view') }}"><i
+                                    class="ti-more"></i>View My Subject</a></li>
+
+                    </ul> --}}
+                </li>
+            @endif
+            {{-- Teacher sideber end --}}
             @if (Auth::user()->role == 'Admin')
             <li class="{{ $route == 'admin.dashboard' ? 'active' : '' }} ">
                 <a href="{{ route('admin.dashboard') }}">
@@ -97,8 +122,16 @@
                             href="{{ route('student.class.view') }}"><i class="ti-more"></i>Student Class</a></li>
                     <li class="{{ $route == 'student.year.view' ? 'active' : '' }}"><a
                             href="{{ route('student.year.view') }}"><i class="ti-more"></i>Student Year</a></li>
+                    <li class="{{ $route == 'student.month.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.month.view') }}"><i class="ti-more"></i>Student Month</a></li>
+                    <li class="{{ $route == 'student.batch.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.batch.view') }}"><i class="ti-more"></i>Student Batch</a></li>
+                    <li class="{{ $route == 'student.semester.view' ? 'active' : '' }}"><a
+                            href="{{ route('student.semester.view') }}"><i class="ti-more"></i>Student Semester</a></li>
                     <li class="{{ $route == 'student.group.view' ? 'active' : '' }}"><a
                             href="{{ route('student.group.view') }}"><i class="ti-more"></i>Student Group</a></li>
+                    <li class="{{ $route == 'class.room.view' ? 'active' : '' }}"><a
+                            href="{{ route('class.room.view') }}"><i class="ti-more"></i>Class Room</a></li>
                     <li class="{{ $route == 'student.shift.view' ? 'active' : '' }}"><a
                             href="{{ route('student.shift.view') }}"><i class="ti-more"></i>Student Shift</a></li>
                     <li class="{{ $route == 'fee.category.view' ? 'active' : '' }}"><a
@@ -197,14 +230,14 @@
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
+                {{-- <ul class="treeview-menu">
                     <li class="{{ $route == 'marks.entry.add' ? 'active' : '' }}"><a
                             href="{{ route('marks.entry.add') }}"><i class="ti-more"></i>Marks Entry</a></li>
                     <li class="{{ $route == 'marks.entry.edit' ? 'active' : '' }}"><a
                             href="{{ route('marks.entry.edit') }}"><i class="ti-more"></i>Marks Edit</a></li>
                     <li class="{{ $route == 'marks.entry.grade' ? 'active' : '' }}"><a
                             href="{{ route('marks.entry.grade') }}"><i class="ti-more"></i>Marks Grade</a></li>
-                </ul>
+                </ul> --}}
             </li>
             <li class="treeview {{ $prefix == '/accounts' ? 'active' : '' }} ">
                 <a href="#">
@@ -213,14 +246,14 @@
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
+                {{-- <ul class="treeview-menu">
                     <li class="{{ $route == 'student.fee.view' ? 'active' : '' }}"><a
                             href="{{ route('student.fee.view') }}"><i class="ti-more"></i>Student Fee</a></li>
                     <li class="{{ $route == 'account.salary.view' ? 'active' : '' }}"><a
                             href="{{ route('account.salary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
                     <li class="{{ $route == 'other.cost.view' ? 'active' : '' }}"><a
                             href="{{ route('other.cost.view') }}"><i class="ti-more"></i>Other Cost</a></li>
-                </ul>
+                </ul> --}}
             </li>
             <li class="header nav-small-cap">Report Interface</li>
             <li class="treeview {{ $prefix == '/reports' ? 'active' : '' }} ">
@@ -230,7 +263,7 @@
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
+                {{-- <ul class="treeview-menu">
                     <li class="{{ $route == 'monthly.profit.view' ? 'active' : '' }}"><a
                             href="{{ route('monthly.profit.view') }}"><i class="ti-more"></i>Monthly-Yearly
                             Profit</a></li>
@@ -246,7 +279,7 @@
                     <li class="{{ $route == 'student.idcard.view' ? 'active' : '' }}"><a
                             href="{{ route('student.idcard.view') }}"><i class="ti-more"></i>Student Id Card</a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             @endif
         </ul>

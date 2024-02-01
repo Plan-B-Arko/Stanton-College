@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="container-full">
             <!-- Content Header (Page header) -->
@@ -7,11 +8,11 @@
             <section class="content">
                 <div class="row">
                     <div class="col-12">
-                        @foreach ( $allData as $assignStudent)
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">My Class Name: {{ $assignStudent['student_class']['name'] }}</h3>
-                                <p class="subtitle" >My Subject List</p>
+                                <h3 class="box-title">Student Batch List</h3>
+                                <a href="{{ route('student.batch.add') }}" style="float: right;"
+                                    class="btn btn-rounded btn-dark mb-5">Add Student Batch</a>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -19,34 +20,31 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th width="5%">SL</th>
-                                                <th>Subject Name</th>
-                                                <th>Subject Full Mark</th>
-                                                <th>Subject Pass Mark</th>
-                                                <th>Subjective Mark</th>
+                                                <th>SL</th>
+                                                <th>Batch Name</th>
+                                                <th>Action </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($assignStudent->assignedSubjects as $key => $assignSubject)
+                                            @foreach ($allData as $key => $value)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td> {{ $assignSubject['subject']['name']}}</td>
-                                                    <td> {{ $assignSubject->full_mark }}</td>
-                                                    <td> {{ $assignSubject->pass_mark }}</td>
-                                                    <td> {{ $assignSubject->subjective_mark }}</td>
+                                                    <td>{{ $value->batch_name }}</td>
+                                                    <td>
+                                                        <a href="{{ route('student.batch.edit', $value->id) }}"
+                                                            class="btn btn-success">Edit</a>
+                                                        <a href="{{ route('student.batch.delete', $value->id) }}"
+                                                            id="delete" class="btn btn-danger">Delete</a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
                             <!-- /.box-body -->
-
                         </div>
                         <!-- /.box -->
-                        @endforeach
                     </div>
                     <!-- /.col -->
                 </div>
@@ -55,5 +53,5 @@
             <!-- /.content -->
         </div>
     </div>
+    <!-- /.content-wrapper -->
 @endsection
-

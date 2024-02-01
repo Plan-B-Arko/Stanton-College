@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
+
 </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -40,6 +41,13 @@
     <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+   {{-- for student dashboard  --}}
+   <script src="{{ asset('../assets/vendor_components/Flot/jquery.flot.js') }}"></script>
+<script src="{{ asset('../assets/vendor_components/Flot/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('../assets/vendor_components/Flot/jquery.flot.pie.js') }}"></script>
+<script src="{{ asset('../assets/vendor_components/Flot/jquery.flot.categories.js') }}"></script>
+<script src="{{ asset('backend/js/pages/widget-flot-charts.js') }}"></script>
+   {{-- for student dashboard  --}}
     <!-- Sunny Admin App -->
     {{-- for data table start  --}}
     <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
