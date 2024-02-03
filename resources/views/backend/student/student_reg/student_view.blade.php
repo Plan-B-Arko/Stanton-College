@@ -14,7 +14,7 @@
                                 <div class="box-body">
                                     <form method="GET" action="{{ route('student.year.class.wise') }}">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <h5>Year <span class="text-danger"> </span></h5>
                                                     <div class="controls">
@@ -30,7 +30,24 @@
                                                     </div>
                                                 </div>
                                             </div> <!-- End Col md 4 -->
-                                            <div class="col-md-4">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <h5>Month <span class="text-danger"> </span></h5>
+                                                    <div class="controls">
+                                                        <select name="month_id" required="" class="form-control">
+                                                            <option value="" selected="" disabled="">Select
+                                                                Month
+                                                            </option>
+                                                            @foreach ($months as $month)
+                                                                <option value="{{ $month->id }}"
+                                                                    {{ @$month_id == $month->id ? 'selected' : '' }}>
+                                                                    {{ $month->month_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- End Col md 4 -->
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <h5>Class <span class="text-danger"> </span></h5>
                                                     <div class="controls">
@@ -47,7 +64,41 @@
                                                     </div>
                                                 </div>
                                             </div> <!-- End Col md 4 -->
-                                            <div class="col-md-4" style="padding-top: 25px;">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <h5>Batch <span class="text-danger"> </span></h5>
+                                                    <div class="controls">
+                                                        <select name="batch_id" required="" class="form-control">
+                                                            <option value="" selected="" disabled="">Select
+                                                                Batch
+                                                            </option>
+                                                            @foreach ($batches as $batch)
+                                                                <option value="{{ $batch->id }}"
+                                                                    {{ @$batch_id == $batch->id ? 'selected' : '' }}>
+                                                                    {{ $batch->batch_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- End Col md 4 -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <h5>Semester <span class="text-danger"> </span></h5>
+                                                    <div class="controls">
+                                                        <select name="semester_id" required="" class="form-control">
+                                                            <option value="" selected="" disabled="">Select
+                                                                Semester
+                                                            </option>
+                                                            @foreach ($semesters as $semester)
+                                                                <option value="{{ $semester->id }}"
+                                                                    {{ @$semester_id == $semester->id ? 'selected' : '' }}>
+                                                                    {{ $semester->semester_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- End Col md 4 -->
+                                            <div class="col-md-2" style="padding-top: 25px;">
                                                 <input type="submit" class="btn btn-rounded btn-dark mb-5" name="search"
                                                     value="Search">
                                             </div> <!-- End Col md 4 -->
@@ -66,8 +117,8 @@
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="table-responsive">
-                                        @if ('search')
-                                            {{-- @if (!@isset($request->search)) --}}
+                                        {{-- @if ('search') --}}
+                                            @if (!isset($search))
                                             {{-- @if (!@search) --}}
                                             <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
@@ -78,6 +129,9 @@
                                                         <th>Email</th>
                                                         <th>Roll</th>
                                                         <th>Year</th>
+                                                        <th>Month</th>
+                                                        <th>Semester</th>
+                                                        <th>Batch</th>
                                                         <th>Class</th>
                                                         <th>Image</th>
                                                         @if (Auth::user()->role == 'Admin')
@@ -95,6 +149,9 @@
                                                             <td> {{ $value['student']['email'] }}</td>
                                                             <td> {{ $value->roll }} </td>
                                                             <td> {{ $value['student_year']['name'] }}</td>
+                                                            <td> {{ $value['student_month']['month_name'] }}</td>
+                                                            <td> {{ $value['student_semester']['semester_name'] }}</td>
+                                                            <td> {{ $value['student_batch']['batch_name'] }}</td>
                                                             <td> {{ $value['student_class']['name'] }}</td>
                                                             <td>
                                                                 <img src="{{ !empty($value['student']['image']) ? url('upload/user_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
@@ -104,13 +161,13 @@
                                                             <td>
                                                                 <a title="Edit"
                                                                     href="{{ route('student.registration.edit', $value->student_id) }}"
-                                                                    class="btn btn-info"> <i class="fa fa-edit"></i> </a>
+                                                                    {{-- class="btn btn-info" --}}> <i class="fa fa-edit"></i> </a>
                                                                 <a title="Promotion"
                                                                     href="{{ route('student.registration.promotion', $value->student_id) }}"
-                                                                    class="btn btn-primary"><i class="fa fa-check"></i></a>
+                                                                   {{--  class="btn btn-primary" --}}><i class="fa fa-check"></i></a>
                                                                 <a target="_blank" title="Details"
                                                                     href="{{ route('student.registration.details', $value->student_id) }}"
-                                                                    class="btn btn-danger"><i class="fa fa-eye"></i></a>
+                                                                    {{-- class="btn btn-danger" --}}><i class="fa fa-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -128,6 +185,9 @@
                                                         <th>Email</th>
                                                         <th>Roll</th>
                                                         <th>Year</th>
+                                                        <th>Month</th>
+                                                        <th>Semester</th>
+                                                        <th>Batch</th>
                                                         <th>Class</th>
                                                         <th>Image</th>
                                                         @if (Auth::user()->role == 'Admin')
@@ -145,6 +205,9 @@
                                                             <td> {{ $value['student']['email'] }}</td>
                                                             <td> {{ $value->roll }} </td>
                                                             <td> {{ $value['student_year']['name'] }}</td>
+                                                            <td> {{ $value['student_month']['month_name'] }}</td>
+                                                            <td> {{ $value['student_semester']['semester_name'] }}</td>
+                                                            <td> {{ $value['student_batch']['batch_name'] }}</td>
                                                             <td> {{ $value['student_class']['name'] }}</td>
                                                             <td>
                                                                 <img src="{{ !empty($value['student']['image']) ? url('upload/user_images/' . $value['student']['image']) : url('upload/no_image.jpg') }}"
@@ -154,13 +217,13 @@
                                                             <td>
                                                                 <a title="Edit"
                                                                     href="{{ route('student.registration.edit', $value->student_id) }}"
-                                                                    class="btn btn-info"> <i class="fa fa-edit"></i> </a>
+                                                                   {{--  class="btn btn-info" --}}class="badge badge-primary"> <i class="fa fa-edit"></i> </a>
                                                                 <a title="Promotion"
                                                                     href="{{ route('student.registration.promotion', $value->student_id) }}"
-                                                                    class="btn btn-primary"><i class="fa fa-check"></i></a>
+                                                                    {{-- class="btn btn-primary" --}}class="badge badge-info"><i class="fa fa-check"></i></a>
                                                                 <a target="_blank" title="Details"
                                                                     href="{{ route('student.registration.details', $value->student_id) }}"
-                                                                    class="btn btn-danger"><i class="fa fa-eye"></i></a>
+                                                                    {{-- class="btn btn-danger" --}} class="badge badge-success"><i class="fa fa-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach

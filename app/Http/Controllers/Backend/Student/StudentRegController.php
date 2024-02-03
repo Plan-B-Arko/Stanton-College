@@ -24,24 +24,38 @@ class StudentRegController extends Controller
     {
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
+        $data['batches'] = StudentBatch::all();
+        $data['months'] = StudentMonth::all();
+        $data['semesters'] = StudentSemester::all();
+        $data['batch_id'] = StudentBatch::orderBy('id', 'desc')->first()->id;
+        $data['month_id'] = StudentMonth::orderBy('id', 'desc')->first()->id;
+        $data['semester_id'] = StudentSemester::orderBy('id', 'desc')->first()->id;
         $data['year_id'] = StudentYear::orderBy('id', 'desc')->first()->id;
         $data['class_id'] = StudentClass::orderBy('id', 'desc')->first()->id;
         // dd($data['class_id']);
-        $data['allData'] = AssignStudent::where('year_id', $data['year_id'])->where('class_id', $data['class_id'])->get();
+        $data['allData'] = AssignStudent::where('year_id', $data['year_id'])->where('semester_id', $data['semester_id'])->where('month_id', $data['month_id'])->where('batch_id', $data['batch_id'])->where('class_id', $data['class_id'])->get();
         return view('backend.student.student_reg.student_view', $data);
     }
     public function StudentClassYearWise(Request $request)
     {
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
+        $data['batches'] = StudentBatch::all();
+        $data['months'] = StudentMonth::all();
+        $data['semesters'] = StudentSemester::all();
+        $data['semester_id'] = $request->semester_id;
+        $data['batch_id'] = $request->batch_id;
+        $data['month_id'] = $request->month_id;
         $data['year_id'] = $request->year_id;
         $data['class_id'] = $request->class_id;
         $data['search'] = $request->search;
-        $data['allData'] = AssignStudent::where('year_id', $request->year_id)->where('class_id', $request->class_id)->get();
+        $data['allData'] = AssignStudent::where('year_id', $request->year_id)->where('month_id', $request->month_id)->where('semester_id',  $request->semester_id)->where('batch_id', $request->batch_id)->where('class_id', $request->class_id)->get();
+        // dd($data['allData']->toArray());
         return view('backend.student.student_reg.student_view', $data);
     }
     public function StudentRegAdd()
     {
+
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
         $data['groups'] = StudentGroup::all();
@@ -54,6 +68,9 @@ class StudentRegController extends Controller
     public function StudentRegStore(Request $request)
     {
         DB::transaction(function () use ($request) {
+            $validateData = $request->validate([
+                'discount'=>'required|integer',
+            ]);
             $checkYear = StudentYear::find($request->year_id)->name;
             $student = User::where('usertype', 'Student')->orderBy('id', 'DESC')->first();
             if ($student == null) {
@@ -105,6 +122,9 @@ class StudentRegController extends Controller
             $assign_student = new AssignStudent();
             $assign_student->student_id = $user->id;
             $assign_student->year_id = $request->year_id;
+            $assign_student->month_id = $request->month_id;
+            $assign_student->semester_id = $request->semester_id;
+            $assign_student->batch_id = $request->batch_id;
             $assign_student->class_id = $request->class_id;
             $assign_student->group_id = $request->group_id;
             $assign_student->shift_id = $request->shift_id;
@@ -127,6 +147,9 @@ class StudentRegController extends Controller
         $data['classes'] = StudentClass::all();
         $data['groups'] = StudentGroup::all();
         $data['shifts'] = StudentShift::all();
+        $data['batches'] = StudentBatch::all();
+        $data['months'] = StudentMonth::all();
+        $data['semesters'] = StudentSemester::all();
         $data['editData'] = AssignStudent::with(['student', 'discount'])->where('student_id', $student_id)->first();
         // dd($data['editData']->toArray());
         return view('backend.student.student_reg.student_edit', $data);
@@ -155,6 +178,9 @@ class StudentRegController extends Controller
             $user->save();
             $assign_student = AssignStudent::where('id', $request->id)->where('student_id', $student_id)->first();
             $assign_student->year_id = $request->year_id;
+            $assign_student->month_id = $request->month_id;
+            $assign_student->semester_id = $request->semester_id;
+            $assign_student->batch_id = $request->batch_id;
             $assign_student->class_id = $request->class_id;
             $assign_student->group_id = $request->group_id;
             $assign_student->shift_id = $request->shift_id;
@@ -175,6 +201,9 @@ class StudentRegController extends Controller
         $data['classes'] = StudentClass::all();
         $data['groups'] = StudentGroup::all();
         $data['shifts'] = StudentShift::all();
+        $data['batches'] = StudentBatch::all();
+        $data['months'] = StudentMonth::all();
+        $data['semesters'] = StudentSemester::all();
         $data['editData'] = AssignStudent::with(['student', 'discount'])->where('student_id', $student_id)->first();
         return view('backend.student.student_reg.student_promotion', $data);
     }

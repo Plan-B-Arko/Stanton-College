@@ -184,6 +184,53 @@
                                             <div class="row"> <!-- 5TH Row -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <h5>Student Batch <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="batch_id" required="" class="form-control">
+                                                                <option value="" selected="" disabled="">
+                                                                    Select Batch</option>
+                                                                @foreach ($batches as $batch)
+                                                                    <option value="{{ $batch->id }}" {{ $editData->batch_id == $batch->id ? 'selected' : ''}}>{{ $batch->batch_name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <h5>Month <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="month_id" required="" class="form-control">
+                                                                <option value="" selected="" disabled="">
+                                                                    Select Month</option>
+                                                                @foreach ($months as $month)
+                                                                <option value="{{ $month->id }}"{{ $editData->month_id == $month->id ? 'selected' : '' }}>{{ $month->month_name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <h5>Semester <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="semester_id" required="" class="form-control">
+                                                                <option value="" selected="" disabled="">
+                                                                    Select Semester</option>
+                                                                @foreach ($semesters as $semester)
+                                                                    <option value="{{ $semester->id }}"{{ $editData->semester_id == $semester->id ? 'selected' : '' }}>{{ $semester->semester_name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                            </div> <!-- End 5TH Row -->
+                                            <div class="row"> <!-- 6TH Row -->
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <h5>Shift <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <select name="shift_id" required="" class="form-control">
@@ -237,7 +284,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                            </div> <!-- End 5TH Row -->
+                                            </div> <!-- End 6TH Row -->
                                             <div class="text-xs-right">
                                                 <input type="submit" class="btn btn-rounded btn-info mb-5"
                                                     value="Update">

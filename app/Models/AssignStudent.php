@@ -35,7 +35,7 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(StudentSemester::class, 'semester_id', 'id');
     }
-    public function student_Month()
+    public function student_month()
     {
         return $this->belongsTo(StudentMonth::class, 'month_id', 'id');
     }

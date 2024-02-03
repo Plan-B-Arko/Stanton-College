@@ -110,6 +110,9 @@
                                                             <input type="text" name="discount" class="form-control"
                                                                 required="">
                                                         </div>
+                                                        @error('discount')
+                                                         <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                             </div> <!-- End 3rd Row -->
