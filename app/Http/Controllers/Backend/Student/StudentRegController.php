@@ -231,6 +231,9 @@ class StudentRegController extends Controller
             $assign_student = new AssignStudent();
             $assign_student->student_id = $student_id;
             $assign_student->year_id = $request->year_id;
+            $assign_student->month_id = $request->month_id;
+            $assign_student->semester_id = $request->semester_id;
+            $assign_student->batch_id = $request->batch_id;
             $assign_student->class_id = $request->class_id;
             $assign_student->group_id = $request->group_id;
             $assign_student->shift_id = $request->shift_id;

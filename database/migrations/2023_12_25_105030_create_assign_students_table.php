@@ -18,6 +18,9 @@ class CreateAssignStudentsTable extends Migration
             $table->integer('student_id')->comment('user_id=student_id');
             $table->integer('roll')->nullable();
             $table->integer('class_id');
+            $table->integer('month_id')->nullable();
+            $table->integer('semester_id')->nullable();
+            $table->integer('batch_id')->nullable();
             $table->integer('year_id');
             $table->integer('group_id')->nullable();
             $table->integer('shift_id')->nullable();

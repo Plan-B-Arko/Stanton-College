@@ -62,29 +62,22 @@
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <h5>Email<span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="email" name="email" class="form-control"
+                                                                required="" value="{{ $editData['student']['email'] }}">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <h5>Address <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" name="address" class="form-control"
                                                                 required=""
                                                                 value="{{ $editData['student']['address'] }}">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Gender <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="gender" id="gender" required=""
-                                                                class="form-control">
-                                                                <option value="" selected="" disabled="">Select
-                                                                    Gender</option>
-                                                                <option value="Male"
-                                                                    {{ $editData['student']['gender'] == 'Male' ? 'selected' : '' }}>
-                                                                    Male</option>
-                                                                <option value="Female"
-                                                                    {{ $editData['student']['gender'] == 'Female' ? 'selected' : '' }}>
-                                                                    Female</option>
-                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
@@ -190,7 +183,9 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Batch</option>
                                                                 @foreach ($batches as $batch)
-                                                                    <option value="{{ $batch->id }}" {{ $editData->batch_id == $batch->id ? 'selected' : ''}}>{{ $batch->batch_name }}
+                                                                    <option value="{{ $batch->id }}"
+                                                                        {{ $editData->batch_id == $batch->id ? 'selected' : '' }}>
+                                                                        {{ $batch->batch_name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -205,7 +200,9 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Month</option>
                                                                 @foreach ($months as $month)
-                                                                <option value="{{ $month->id }}"{{ $editData->month_id == $month->id ? 'selected' : '' }}>{{ $month->month_name }}
+                                                                    <option
+                                                                        value="{{ $month->id }}"{{ $editData->month_id == $month->id ? 'selected' : '' }}>
+                                                                        {{ $month->month_name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -216,11 +213,14 @@
                                                     <div class="form-group">
                                                         <h5>Semester <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="semester_id" required="" class="form-control">
+                                                            <select name="semester_id" required=""
+                                                                class="form-control">
                                                                 <option value="" selected="" disabled="">
                                                                     Select Semester</option>
                                                                 @foreach ($semesters as $semester)
-                                                                    <option value="{{ $semester->id }}"{{ $editData->semester_id == $semester->id ? 'selected' : '' }}>{{ $semester->semester_name }}
+                                                                    <option
+                                                                        value="{{ $semester->id }}"{{ $editData->semester_id == $semester->id ? 'selected' : '' }}>
+                                                                        {{ $semester->semester_name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -250,23 +250,61 @@
                                                         <h5>Blood Group <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <select name="blood_group" id="blood_group" required=""
-                                                            class="form-control">
-                                                            <option value="" selected="" disabled="">Select
-                                                                Blood Group</option>
+                                                                class="form-control">
+                                                                <option value="" selected="" disabled="">
+                                                                    Select
+                                                                    Blood Group</option>
 
-                                                                <option value="A+"{{ $editData['student']['blood_group'] == 'A+' ? 'selected' : '' }}>A+</option>
-                                                                <option value="A-"{{ $editData['student']['blood_group'] == 'A-' ? 'selected' : '' }}>A-</option>
-                                                                <option value="B+"{{ $editData['student']['blood_group'] == 'B+' ? 'selected' : '' }}>B+</option>
-                                                                <option value="B-"{{ $editData['student']['blood_group'] == 'B-' ? 'selected' : '' }}>B-</option>
-                                                                <option value="AB+"{{ $editData['student']['blood_group'] == 'AB+' ? 'selected' : '' }}>AB+</option>
-                                                                <option value="AB-"{{ $editData['student']['blood_group'] == 'AB-' ? 'selected' : '' }}>AB-</option>
-                                                                <option value="O+"{{ $editData['student']['blood_group'] == 'O+' ? 'selected' : '' }}>O+</option>
-                                                                <option value="O-"{{ $editData['student']['blood_group'] == 'O-' ? 'selected' : '' }}>O-</option>
-                                                        </select>
+                                                                <option
+                                                                    value="A+"{{ $editData['student']['blood_group'] == 'A+' ? 'selected' : '' }}>
+                                                                    A+</option>
+                                                                <option
+                                                                    value="A-"{{ $editData['student']['blood_group'] == 'A-' ? 'selected' : '' }}>
+                                                                    A-</option>
+                                                                <option
+                                                                    value="B+"{{ $editData['student']['blood_group'] == 'B+' ? 'selected' : '' }}>
+                                                                    B+</option>
+                                                                <option
+                                                                    value="B-"{{ $editData['student']['blood_group'] == 'B-' ? 'selected' : '' }}>
+                                                                    B-</option>
+                                                                <option
+                                                                    value="AB+"{{ $editData['student']['blood_group'] == 'AB+' ? 'selected' : '' }}>
+                                                                    AB+</option>
+                                                                <option
+                                                                    value="AB-"{{ $editData['student']['blood_group'] == 'AB-' ? 'selected' : '' }}>
+                                                                    AB-</option>
+                                                                <option
+                                                                    value="O+"{{ $editData['student']['blood_group'] == 'O+' ? 'selected' : '' }}>
+                                                                    O+</option>
+                                                                <option
+                                                                    value="O-"{{ $editData['student']['blood_group'] == 'O-' ? 'selected' : '' }}>
+                                                                    O-</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <h5>Gender <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="gender" id="gender" required=""
+                                                                class="form-control">
+                                                                <option value="" selected="" disabled="">
+                                                                    Select
+                                                                    Gender</option>
+                                                                <option value="Male"
+                                                                    {{ $editData['student']['gender'] == 'Male' ? 'selected' : '' }}>
+                                                                    Male</option>
+                                                                <option value="Female"
+                                                                    {{ $editData['student']['gender'] == 'Female' ? 'selected' : '' }}>
+                                                                    Female</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                            </div> <!-- End 6TH Row -->
+                                            <div class="row"> <!-- 7th Row -->
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Profile Image <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -275,7 +313,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-1">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <img id="showImage"
@@ -284,7 +322,8 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                            </div> <!-- End 6TH Row -->
+
+                                            </div> <!-- End 7th Row -->
                                             <div class="text-xs-right">
                                                 <input type="submit" class="btn btn-rounded btn-info mb-5"
                                                     value="Update">

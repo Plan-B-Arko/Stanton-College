@@ -113,21 +113,36 @@
         </tr>
         <tr>
             <td>12</td>
-            <td><b>Year </b></td>
-            <td>{{ $details['student_year']['name'] }}</td>
-        </tr>
-        <tr>
-            <td>13</td>
             <td><b>Class </b></td>
             <td>{{ $details['student_class']['name'] }}</td>
         </tr>
         <tr>
-            <td>14</td>
+            <td>13</td>
             <td><b>Group </b></td>
             <td>{{ $details['group']['name'] }}</td>
         </tr>
         <tr>
+            <td>14</td>
+            <td><b>Year </b></td>
+            <td>{{ $details['student_year']['name'] }}</td>
+        </tr>
+        <tr>
             <td>15</td>
+            <td><b>Month/Session </b></td>
+            <td>{{ $details['student_month']['month_name'] }}</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td><b>Batch </b></td>
+            <td>{{ $details['student_batch']['batch_name'] }}</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td><b>Student Semester </b></td>
+            <td>{{ $details['student_semester']['semester_name'] }}</td>
+        </tr>
+        <tr>
+            <td>18</td>
             <td><b>Shift </b></td>
             <td>{{ $details['shift']['name'] }}</td>
         </tr>
