@@ -41,6 +41,10 @@
     <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+    {{-- for ckeditor start --}}
+    <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/editor.js') }}"></script>
+    {{-- for ckeditor end --}}
    {{-- for student dashboard  --}}
    <script src="{{ asset('../assets/vendor_components/Flot/jquery.flot.js') }}"></script>
 <script src="{{ asset('../assets/vendor_components/Flot/jquery.flot.resize.js') }}"></script>

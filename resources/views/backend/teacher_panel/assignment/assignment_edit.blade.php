@@ -8,13 +8,13 @@
                 <!-- Basic Forms -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Add Student </h4>
+                        <h4 class="box-title">Edit Assignment </h4>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action="{{ route('store.student.registration') }}"
+                                <form method="post" action="{{ route('update.assignment',$editData->id) }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -22,100 +22,38 @@
                                             <div class="row"> <!-- 1st Row -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Student Name <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Title <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="name" class="form-control"
+                                                            <input type="text" name="assignment_title" value="{{ $editData->assignment_title }}" class="form-control"
                                                                 required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Father's Name <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Marks<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="fname" class="form-control"
+                                                            <input type="text" name="assignment_marks" value="{{ $editData->assignment_marks }}" class="form-control"
                                                                 required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Mother's Name <span class="text-danger">*</span></h5>
+                                                        <h5>Subject <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="mname" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                            </div> <!-- End 1stRow -->
-                                            <div class="row"> <!-- 2nd Row -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Mobile Number <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="mobile" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Email <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="email" name="email" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Address <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="address" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-
-                                            </div> <!-- End 2nd Row -->
-                                            <div class="row"> <!-- 3rd Row -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Religion <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="religion" id="religion" required=""
-                                                                class="form-control">
-                                                                <option value="" selected="" disabled="">Select
-                                                                    Religion</option>
-                                                                <option value="Islam">Islam</option>
-                                                                <option value="Hindu">Hindu</option>
-                                                                <option value="Christan">Christan</option>
+                                                            <select name="subject_id" required="" class="form-control">
+                                                                <option value="" selected="" disabled="">
+                                                                    Select Subject</option>
+                                                                @foreach ($subjects as $subject)
+                                                                    <option value="{{ $subject->id }}"{{ $editData->subject_id == $subject->id ? 'selected' : '' }}>{{ $subject->name }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Date of Birth <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="date" name="dob" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Discount <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="discount" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                        @error('discount')
-                                                         <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                            </div> <!-- End 3rd Row -->
+                                            </div> <!-- End 1stRow -->
                                             <div class="row"> <!-- 4TH Row -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
@@ -125,7 +63,7 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Year</option>
                                                                 @foreach ($years as $year)
-                                                                    <option value="{{ $year->id }}">{{ $year->name }}
+                                                                    <option value="{{ $year->id }}"{{ $editData->year_id == $year->id ? 'selected' : '' }}>{{ $year->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -140,7 +78,7 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Class</option>
                                                                 @foreach ($classes as $class)
-                                                                    <option value="{{ $class->id }}">{{ $class->name }}
+                                                                    <option value="{{ $class->id }}"{{ $editData->class_id == $class->id ? 'selected' : '' }}>{{ $class->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -155,7 +93,7 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Group</option>
                                                                 @foreach ($groups as $group)
-                                                                    <option value="{{ $group->id }}">{{ $group->name }}
+                                                                    <option value="{{ $group->id }}"{{ $editData->group_id == $group->id ? 'selected' : '' }}>{{ $group->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -172,7 +110,7 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Batch</option>
                                                                 @foreach ($batches as $batch)
-                                                                    <option value="{{ $batch->id }}">{{ $batch->batch_name }}
+                                                                    <option value="{{ $batch->id }}"{{ $editData->batch_id == $batch->id ? 'selected' : '' }}>{{ $batch->batch_name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -187,7 +125,7 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Month</option>
                                                                 @foreach ($months as $month)
-                                                                    <option value="{{ $month->id }}">{{ $month->month_name }}
+                                                                    <option value="{{ $month->id }}"{{ $editData->month_id == $month->id ? 'selected' : '' }}>{{ $month->month_name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -202,7 +140,7 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Semester</option>
                                                                 @foreach ($semesters as $semester)
-                                                                    <option value="{{ $semester->id }}">{{ $semester->semester_name }}
+                                                                    <option value="{{ $semester->id }}"{{ $editData->semester_id == $semester->id ? 'selected' : '' }}>{{ $semester->semester_name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -220,7 +158,7 @@
                                                                 <option value="" selected="" disabled="">
                                                                     Select Shift</option>
                                                                 @foreach ($shifts as $shift)
-                                                                    <option value="{{ $shift->id }}">{{ $shift->name }}
+                                                                    <option value="{{ $shift->id }}"{{ $editData->shift_id == $shift->id ? 'selected' : '' }}>{{ $shift->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -229,56 +167,41 @@
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Gender <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Submission Start Date<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="gender" id="gender" required=""
-                                                                class="form-control">
-                                                                <option value="" selected="" disabled="">Select
-                                                                    Gender</option>
-                                                                <option value="Male">Male</option>
-                                                                <option value="Female">Female</option>
-                                                            </select>
+                                                            <input type="date" name="assignment_start_date" value="{{ $editData->assignment_start_date }}" class="form-control"
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Blood Group <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Submission End Date<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="blood_group" required="" class="form-control">
-                                                                <option value="" selected="" disabled="">
-                                                                    Select Blood Group</option>
-                                                                    <option value="A+">A+</option>
-                                                                    <option value="A-">A-</option>
-                                                                    <option value="B+">B+</option>
-                                                                    <option value="B-">B-</option>
-                                                                    <option value="AB+">AB+</option>
-                                                                    <option value="AB-">AB-</option>
-                                                                    <option value="O+">O+</option>
-                                                                    <option value="O-">O-</option>
-
-
-                                                            </select>
+                                                            <input type="date" name="assignment_end_date" value="{{ $editData->assignment_end_date }}" class="form-control"
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
+
+
                                             </div> <!-- End 6TH Row -->
                                             <div class="row">
+
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Registered Date Semester wise<span class="text-danger">*</span></h5>
+                                                        <h5>Attach Document<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="registered_date_semester_wise" class="form-control"
+                                                            <input type="file" name="document" value="{{ $editData->document }}" class="form-control"
                                                                >
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Profile Image <span class="text-danger">*</span></h5>
+                                                        <h5>Attach Picture<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="file" name="image" class="form-control"
+                                                            <input type="file" name="picture" class="form-control"
                                                                 id="image">
                                                         </div>
                                                     </div>
@@ -286,13 +209,18 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
+                                                            <img id="showImage" src="{{ !empty($editData->picture) ? url('upload/student_assignment_image/' . $editData->picture) : url('upload/no_image.jpg') }}"
                                                                 style="width: 100px; width: 100px; border: 1px solid #000000;">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
 
                                             </div>
+
+                                            <h5>Assignment Description<span class="text-danger">*</span></h5>
+                                            <textarea id="editor1"  name="description" rows="10" cols="80">
+                                                {{ $editData->description }}
+                                             </textarea>
                                             <div class="text-xs-right mt-5">
                                                 <input type="submit" class="btn btn-rounded btn-info mb-5"
                                                     value="Submit">
@@ -309,6 +237,9 @@
             </section>
         </div>
     </div>
+
+
+	<!-- Sunny Admin App -->
     <script type="text/javascript">
         $(document).ready(function() {
             $('#image').change(function(e) {

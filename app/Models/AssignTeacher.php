@@ -27,5 +27,9 @@ class AssignTeacher extends Model
     {
         return $this->belongsTo(StudentShift::class, 'shift_id', 'id');
     }
-
+    /* for assignment view purpos on teacher panel start  */
+    public function assignments(){
+        return $this->hasMany(StudentAssignment::class, 'class_id','class_id');
+    }
+    /* for assignment view purpos on teacher panel end */
 }

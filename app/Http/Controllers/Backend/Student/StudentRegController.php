@@ -128,6 +128,7 @@ class StudentRegController extends Controller
             $assign_student->class_id = $request->class_id;
             $assign_student->group_id = $request->group_id;
             $assign_student->shift_id = $request->shift_id;
+            $assign_student->registered_date_semester_wise = $request->registered_date_semester_wise;
             $assign_student->save();
             $discount_student = new DiscountStudent();
             $discount_student->assign_student_id = $assign_student->id;
@@ -184,6 +185,7 @@ class StudentRegController extends Controller
             $assign_student->class_id = $request->class_id;
             $assign_student->group_id = $request->group_id;
             $assign_student->shift_id = $request->shift_id;
+            $assign_student->registered_date_semester_wise = $request->registered_date_semester_wise;
             $assign_student->save();
             $discount_student = DiscountStudent::where('assign_student_id', $request->id)->first();
             $discount_student->discount = $request->discount;
@@ -237,6 +239,7 @@ class StudentRegController extends Controller
             $assign_student->class_id = $request->class_id;
             $assign_student->group_id = $request->group_id;
             $assign_student->shift_id = $request->shift_id;
+            $assign_student->registered_date_semester_wise = $request->registered_date_semester_wise;
             $assign_student->save();
             $discount_student = new DiscountStudent();
             $discount_student->assign_student_id = $assign_student->id;

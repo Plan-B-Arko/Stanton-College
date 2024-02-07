@@ -161,13 +161,13 @@
                                                             <td>
                                                                 <a title="Edit"
                                                                     href="{{ route('student.registration.edit', $value->student_id) }}"
-                                                                    {{-- class="btn btn-info" --}}> <i class="fa fa-edit"></i> </a>
+                                                                   {{--  class="btn btn-info" --}}class="badge badge-primary"> <i class="fa fa-edit"></i> </a>
                                                                 <a title="Promotion"
                                                                     href="{{ route('student.registration.promotion', $value->student_id) }}"
-                                                                   {{--  class="btn btn-primary" --}}><i class="fa fa-check"></i></a>
+                                                                    {{-- class="btn btn-primary" --}}class="badge badge-info"><i class="fa fa-check"></i></a>
                                                                 <a target="_blank" title="Details"
                                                                     href="{{ route('student.registration.details', $value->student_id) }}"
-                                                                    {{-- class="btn btn-danger" --}}><i class="fa fa-eye"></i></a>
+                                                                    {{-- class="btn btn-danger" --}} class="badge badge-success"><i class="fa fa-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach

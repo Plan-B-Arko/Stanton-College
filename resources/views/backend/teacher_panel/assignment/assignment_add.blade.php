@@ -8,13 +8,13 @@
                 <!-- Basic Forms -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Add Student </h4>
+                        <h4 class="box-title">Add Assignment </h4>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action="{{ route('store.student.registration') }}"
+                                <form method="post" action="{{ route('store.assignment') }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -22,100 +22,38 @@
                                             <div class="row"> <!-- 1st Row -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Student Name <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Title <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="name" class="form-control"
+                                                            <input type="text" name="assignment_title" class="form-control"
                                                                 required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Father's Name <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Marks<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="fname" class="form-control"
+                                                            <input type="text" name="assignment_marks" class="form-control"
                                                                 required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Mother's Name <span class="text-danger">*</span></h5>
+                                                        <h5>Subject <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="mname" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                            </div> <!-- End 1stRow -->
-                                            <div class="row"> <!-- 2nd Row -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Mobile Number <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="mobile" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Email <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="email" name="email" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Address <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="address" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-
-                                            </div> <!-- End 2nd Row -->
-                                            <div class="row"> <!-- 3rd Row -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Religion <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="religion" id="religion" required=""
-                                                                class="form-control">
-                                                                <option value="" selected="" disabled="">Select
-                                                                    Religion</option>
-                                                                <option value="Islam">Islam</option>
-                                                                <option value="Hindu">Hindu</option>
-                                                                <option value="Christan">Christan</option>
+                                                            <select name="subject_id" required="" class="form-control">
+                                                                <option value="" selected="" disabled="">
+                                                                    Select Subject</option>
+                                                                @foreach ($subjects as $subject)
+                                                                    <option value="{{ $subject->id }}">{{ $subject->name }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Date of Birth <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="date" name="dob" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <h5>Discount <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="discount" class="form-control"
-                                                                required="">
-                                                        </div>
-                                                        @error('discount')
-                                                         <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div> <!-- End Col md 4 -->
-                                            </div> <!-- End 3rd Row -->
+                                            </div> <!-- End 1stRow -->
                                             <div class="row"> <!-- 4TH Row -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
@@ -229,56 +167,41 @@
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Gender <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Submission Start Date<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="gender" id="gender" required=""
-                                                                class="form-control">
-                                                                <option value="" selected="" disabled="">Select
-                                                                    Gender</option>
-                                                                <option value="Male">Male</option>
-                                                                <option value="Female">Female</option>
-                                                            </select>
+                                                            <input type="date" name="assignment_start_date" class="form-control"
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Blood Group <span class="text-danger">*</span></h5>
+                                                        <h5>Assignment Submission End Date<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="blood_group" required="" class="form-control">
-                                                                <option value="" selected="" disabled="">
-                                                                    Select Blood Group</option>
-                                                                    <option value="A+">A+</option>
-                                                                    <option value="A-">A-</option>
-                                                                    <option value="B+">B+</option>
-                                                                    <option value="B-">B-</option>
-                                                                    <option value="AB+">AB+</option>
-                                                                    <option value="AB-">AB-</option>
-                                                                    <option value="O+">O+</option>
-                                                                    <option value="O-">O-</option>
-
-
-                                                            </select>
+                                                            <input type="date" name="assignment_end_date" class="form-control"
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
+
+
                                             </div> <!-- End 6TH Row -->
                                             <div class="row">
+
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Registered Date Semester wise<span class="text-danger">*</span></h5>
+                                                        <h5>Attach Document<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="registered_date_semester_wise" class="form-control"
+                                                            <input type="file" name="document" class="form-control"
                                                                >
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <h5>Profile Image <span class="text-danger">*</span></h5>
+                                                        <h5>Attach Picture<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="file" name="image" class="form-control"
+                                                            <input type="file" name="picture" class="form-control"
                                                                 id="image">
                                                         </div>
                                                     </div>
@@ -293,6 +216,11 @@
                                                 </div> <!-- End Col md 4 -->
 
                                             </div>
+
+                                            <h5>Assignment Description<span class="text-danger">*</span></h5>
+                                            <textarea id="editor1" name="description" rows="10" cols="80">
+
+                                             </textarea>
                                             <div class="text-xs-right mt-5">
                                                 <input type="submit" class="btn btn-rounded btn-info mb-5"
                                                     value="Submit">
@@ -309,6 +237,9 @@
             </section>
         </div>
     </div>
+
+
+	<!-- Sunny Admin App -->
     <script type="text/javascript">
         $(document).ready(function() {
             $('#image').change(function(e) {

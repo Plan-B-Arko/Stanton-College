@@ -62,11 +62,11 @@
                             <i class="fa fa-angle-right pull-right"></i>
                         </span>
                     </a>
-                    {{-- <ul class="treeview-menu">
-                        <li class="{{ $route == 'mysubject.view' ? 'active' : '' }}"><a href="{{ route('mysubject.view') }}"><i
-                                    class="ti-more"></i>View My Subject</a></li>
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'assignment.view' ? 'active' : '' }}"><a href="{{ route('assignment.view') }}"><i
+                                    class="ti-more"></i>View Assignment</a></li>
 
-                    </ul> --}}
+                    </ul>
                 </li>
             @endif
             {{-- Teacher sideber end --}}

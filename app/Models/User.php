@@ -59,4 +59,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Designation::class, 'designation_id', 'id');
     }
+
+    /* for assignment view purpos on teacher panel start  */
+    public function assignedClasses(){
+        return $this->hasMany(AssignTeacher::class, 'teacher_id','id');
+    }
+    /* for assignment view purpos on teacher panel end */
 }

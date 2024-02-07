@@ -306,6 +306,15 @@
                                             <div class="row"> <!-- 7th Row -->
                                                 <div class="col-md-4">
                                                     <div class="form-group">
+                                                        <h5>Registered Date Semester wise<span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="date" name="registered_date_semester_wise" value="{{ $editData->registered_date_semester_wise }}" class="form-control"
+                                                               >
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
                                                         <h5>Profile Image <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="file" name="image" class="form-control"

@@ -10,7 +10,15 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     })->name('teacher.dashboard');
 
 
-    // Route::prefix('/teacher/portal')->group(function(){
-    //     Route::get('/mysubject/view',[TeacherPortalController::class,'mySubjectView'])->name('mysubject.view');
-    //     });
+    Route::prefix('/teacher/portal')->group(function(){
+        // assginment all route start
+        Route::get('/assignment/view', [TeacherPortalController::class, 'assignmentView'])->name('assignment.view');
+        Route::get('/assignment/add', [TeacherPortalController::class, 'assignmentAdd'])->name('assignment.add');
+        Route::post('/assignment/store', [TeacherPortalController::class, 'assignmentStore'])->name('store.assignment');
+        Route::get('/assignment/edit/{id}', [TeacherPortalController::class, 'assignmentEdit'])->name('assignment.edit');
+        Route::post('/assignment/update/{id}', [TeacherPortalController::class, 'assignmentUpdate'])->name('update.assignment');
+        Route::get('/assignment/delete/{id}', [TeacherPortalController::class, 'assignmentDelete'])->name('assignment.delete');
+          //employee registration all route
+        });
+
 });

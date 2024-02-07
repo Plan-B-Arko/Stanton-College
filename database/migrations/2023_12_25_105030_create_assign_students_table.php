@@ -24,6 +24,7 @@ class CreateAssignStudentsTable extends Migration
             $table->integer('year_id');
             $table->integer('group_id')->nullable();
             $table->integer('shift_id')->nullable();
+            $table->date('registered_date_semester_wise')->nullable();
             $table->timestamps();
         });
     }
