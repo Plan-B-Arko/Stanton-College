@@ -192,12 +192,20 @@
                                                     <div class="form-group">
                                                         <h5>Attach Document<span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="file" name="document" class="form-control"
-                                                               >
+                                                            <input type="file" name="document"  class="form-control"
+                                                               id="document">
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
                                                 <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <iframe id="showDocument"  src="{{ url('upload/no_file_available.PNG') }}"
+                                                                style="width: 350px; height: 100px; border: 1px solid #000000;"></iframe>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- End Col md 4 -->
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <h5>Attach Picture<span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -206,7 +214,7 @@
                                                         </div>
                                                     </div>
                                                 </div> <!-- End Col md 4 -->
-                                                <div class="col-md-4">
+                                                <div class="col-md-1">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
@@ -251,4 +259,15 @@
             });
         });
     </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#document').change(function(e) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#showDocument').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(e.target.files['0']);
+                });
+            });
+        </script>
 @endsection

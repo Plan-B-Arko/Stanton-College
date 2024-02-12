@@ -43,6 +43,42 @@
 
                     </ul>
                 </li>
+                <li class="treeview {{ $prefix == '/student/portal/assignment' ? 'active' : '' }} ">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>My Assignment</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'first.semester.assignment.view' ? 'active' : '' }}"><a href="{{ route('first.semester.assignment.view') }}"><i
+                                    class="ti-more"></i>First Semester Assignment</a></li>
+
+                    </ul>
+                    @php
+                         $studnetId = Auth::user()->id;
+                         $semesterId =App\Models\AssignStudent::where('student_id',$studnetId)->where('semester_id',2);
+                    @endphp
+                    @if ($semesterId == '2')
+                        
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'second.semester.assignment.view' ? 'active' : '' }}"><a href="{{ route('second.semester.assignment.view') }}"><i
+                                    class="ti-more"></i>Second Semester Assignment</a></li>
+
+                    </ul>
+                    @endif
+                    {{-- <ul class="treeview-menu">
+                        <li class="{{ $route == 'first.semester.assignment.view' ? 'active' : '' }}"><a href="{{ route('first.semester.assignment.view') }}"><i
+                                    class="ti-more"></i>Third Semester Assignment</a></li>
+
+                    </ul>
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'first.semester.assignment.view' ? 'active' : '' }}"><a href="{{ route('first.semester.assignment.view') }}"><i
+                                    class="ti-more"></i>Fourth Semester Assignment</a></li>
+
+                    </ul> --}}
+                </li>
             @endif
             {{-- student siderber end --}}
             {{-- Teacher sideber start --}}
@@ -223,39 +259,39 @@
 
                 </ul>
             </li>
-            <li class="treeview {{ $prefix == '/marks' ? 'active' : '' }} ">
+            {{-- <li class="treeview {{ $prefix == '/marks' ? 'active' : '' }} ">
                 <a href="#">
                     <i data-feather="grid"></i> <span>Marks Management</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
-                {{-- <ul class="treeview-menu">
+                <ul class="treeview-menu">
                     <li class="{{ $route == 'marks.entry.add' ? 'active' : '' }}"><a
                             href="{{ route('marks.entry.add') }}"><i class="ti-more"></i>Marks Entry</a></li>
                     <li class="{{ $route == 'marks.entry.edit' ? 'active' : '' }}"><a
                             href="{{ route('marks.entry.edit') }}"><i class="ti-more"></i>Marks Edit</a></li>
                     <li class="{{ $route == 'marks.entry.grade' ? 'active' : '' }}"><a
                             href="{{ route('marks.entry.grade') }}"><i class="ti-more"></i>Marks Grade</a></li>
-                </ul> --}}
-            </li>
-            <li class="treeview {{ $prefix == '/accounts' ? 'active' : '' }} ">
+                </ul>
+            </li> --}}
+            {{-- <li class="treeview {{ $prefix == '/accounts' ? 'active' : '' }} ">
                 <a href="#">
                     <i data-feather="server"></i> <span>Accounts Management</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
-                {{-- <ul class="treeview-menu">
+                <ul class="treeview-menu">
                     <li class="{{ $route == 'student.fee.view' ? 'active' : '' }}"><a
                             href="{{ route('student.fee.view') }}"><i class="ti-more"></i>Student Fee</a></li>
                     <li class="{{ $route == 'account.salary.view' ? 'active' : '' }}"><a
                             href="{{ route('account.salary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
                     <li class="{{ $route == 'other.cost.view' ? 'active' : '' }}"><a
                             href="{{ route('other.cost.view') }}"><i class="ti-more"></i>Other Cost</a></li>
-                </ul> --}}
-            </li>
-            <li class="header nav-small-cap">Report Interface</li>
+                </ul>
+            </li> --}}
+            {{-- <li class="header nav-small-cap">Report Interface</li>
             <li class="treeview {{ $prefix == '/reports' ? 'active' : '' }} ">
                 <a href="#">
                     <i data-feather="inbox"></i> <span>Reports Management</span>
@@ -263,7 +299,7 @@
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
-                {{-- <ul class="treeview-menu">
+                <ul class="treeview-menu">
                     <li class="{{ $route == 'monthly.profit.view' ? 'active' : '' }}"><a
                             href="{{ route('monthly.profit.view') }}"><i class="ti-more"></i>Monthly-Yearly
                             Profit</a></li>
@@ -279,8 +315,8 @@
                     <li class="{{ $route == 'student.idcard.view' ? 'active' : '' }}"><a
                             href="{{ route('student.idcard.view') }}"><i class="ti-more"></i>Student Id Card</a>
                     </li>
-                </ul> --}}
-            </li>
+                </ul>
+            </li> --}}
             @endif
         </ul>
     </section>
