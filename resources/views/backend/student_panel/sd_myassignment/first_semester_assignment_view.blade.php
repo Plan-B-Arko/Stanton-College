@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Assignment List</h3>
+                                <h3 class="box-title">First Semester Assignment List</h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">

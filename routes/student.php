@@ -15,6 +15,8 @@ Route::get('/first/semester/assignment/view',[StudentPortalController::class,'fi
 Route::prefix('/student/portal/assignment')->group(function(){
 Route::get('/first/semester/view',[StudentPortalController::class,'firstSemesterAssignmentView'])->name('first.semester.assignment.view');
 Route::get('/second/semester/view',[StudentPortalController::class,'secondSemesterAssignmentView'])->name('second.semester.assignment.view');
+Route::get('/third/semester/view',[StudentPortalController::class,'thirdSemesterAssignmentView'])->name('third.semester.assignment.view');
+Route::get('/fourth/semester/view',[StudentPortalController::class,'fourthSemesterAssignmentView'])->name('fourth.semester.assignment.view');
 Route::get('/details/view/{id}',[StudentPortalController::class,'assignmentDetailsView'])->name('assignment.details.view');
 Route::get('/picture/show/{id}',[StudentPortalController::class,'assignmentPictureShow'])->name('assignment.picture.show');
 Route::get('/picture/download/{picture}',[StudentPortalController::class,'assignmentPictureDownload'])->name('assignment.picture.download');

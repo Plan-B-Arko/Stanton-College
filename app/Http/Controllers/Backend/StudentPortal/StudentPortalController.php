@@ -60,6 +60,36 @@ class StudentPortalController extends Controller
         return view('backend.student_panel.sd_myassignment.second_semester_assignment_view',compact('secondSemesterAssignments'));
     }
       // Second Semester data show metho end
+    // third Semester data show metho start
+    public function thirdSemesterAssignmentView(){
+        $studnetId = Auth::user()->id;
+        $semesterId =AssignStudent::where('student_id',$studnetId)->where('semester_id',3)->value('semester_id');
+        $yearId =AssignStudent::where('student_id',$studnetId)->value('year_id');
+        $batchId =AssignStudent::where('student_id',$studnetId)->value('batch_id');
+        $classId =AssignStudent::where('student_id',$studnetId)->value('class_id');
+        $shiftId =AssignStudent::where('student_id',$studnetId)->value('shift_id');
+        $groupId =AssignStudent::where('student_id',$studnetId)->value('group_id');
+        $monthId =AssignStudent::where('student_id',$studnetId)->value('month_id');
+        $thirdSemesterAssignments = StudentAssignment::where('semester_id',$semesterId)->where('year_id',$yearId)->where('batch_id',$batchId)->where('class_id',$classId)->where('shift_id',$shiftId)->where('group_id',$groupId)->where('month_id',$monthId)->get();
+        // dd( $secondSemesterAssignments );
+        return view('backend.student_panel.sd_myassignment.third_semester_assignment_view',compact('thirdSemesterAssignments'));
+    }
+      // third Semester data show metho end
+    // fourth Semester data show metho start
+    public function fourthSemesterAssignmentView(){
+        $studnetId = Auth::user()->id;
+        $semesterId =AssignStudent::where('student_id',$studnetId)->where('semester_id',4)->value('semester_id');
+        $yearId =AssignStudent::where('student_id',$studnetId)->value('year_id');
+        $batchId =AssignStudent::where('student_id',$studnetId)->value('batch_id');
+        $classId =AssignStudent::where('student_id',$studnetId)->value('class_id');
+        $shiftId =AssignStudent::where('student_id',$studnetId)->value('shift_id');
+        $groupId =AssignStudent::where('student_id',$studnetId)->value('group_id');
+        $monthId =AssignStudent::where('student_id',$studnetId)->value('month_id');
+        $fourthSemesterAssignments = StudentAssignment::where('semester_id',$semesterId)->where('year_id',$yearId)->where('batch_id',$batchId)->where('class_id',$classId)->where('shift_id',$shiftId)->where('group_id',$groupId)->where('month_id',$monthId)->get();
+        // dd( $secondSemesterAssignments );
+        return view('backend.student_panel.sd_myassignment.fourth_semester_assignment_view',compact('fourthSemesterAssignments'));
+    }
+      // fourth Semester data show metho end
     public function assignmentDetailsView($id){
         $details = StudentAssignment::find($id);
         return view('backend.student_panel.sd_myassignment.assignment_details_view',compact('details'));

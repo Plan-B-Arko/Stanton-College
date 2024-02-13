@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Second Semester Assignment List</h3>
+                                <h3 class="box-title">Fourth Semester Assignment List</h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -27,16 +27,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($secondSemesterAssignments as $key => $secondSemesterAssignment)
+                                            @foreach ($fourthSemesterAssignments as $key => $fourthSemesterAssignment)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $secondSemesterAssignment->assignment_title }}</td>
-                                                    <td> {{ $secondSemesterAssignment['student_subject']['name']}}</td>
-                                                    <td> {{ $secondSemesterAssignment->assignment_marks }}</td>
-                                                    <td> {{ $secondSemesterAssignment->assignment_start_date }}</td>
-                                                    <td> {{ $secondSemesterAssignment->assignment_end_date }}</td>
+                                                    <td>{{ $fourthSemesterAssignment->assignment_title }}</td>
+                                                    <td> {{ $fourthSemesterAssignment['student_subject']['name']}}</td>
+                                                    <td> {{ $fourthSemesterAssignment->assignment_marks }}</td>
+                                                    <td> {{ $fourthSemesterAssignment->assignment_start_date }}</td>
+                                                    <td> {{ $fourthSemesterAssignment->assignment_end_date }}</td>
                                                     <td>
-                                                        <a title="Edit" href="{{ route('assignment.details.view', $secondSemesterAssignment->id) }}"
+                                                        <a title="Edit" href="{{ route('assignment.details.view', $fourthSemesterAssignment->id) }}"
                                                             class = "btn btn-info"><i class="fa fa-eye"></i></a>
 
 
