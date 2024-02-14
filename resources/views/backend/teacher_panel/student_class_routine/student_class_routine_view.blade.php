@@ -9,9 +9,9 @@
                     <div class="col-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Assignments List</h3>
-                                <a href="{{ route('assignment.add') }}" style="float: right;"
-                                    class="btn btn-rounded btn-dark mb-5">Add Assignment</a>
+                                <h3 class="box-title">Class Routine List</h3>
+                                <a href="{{ route('student.class.routine.add') }}" style="float: right;"
+                                    class="btn btn-rounded btn-dark mb-5">Add Student Class Routine</a>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -20,42 +20,35 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%">SL</th>
-                                                <th>Title</th>
-                                                <th>Marks</th>
                                                 <th>Class</th>
-                                                <th>Subject</th>
                                                 <th>Year</th>
                                                 <th>Month</th>
                                                 <th>Semester</th>
                                                 <th>Batch</th>
                                                 <th>Group</th>
-                                                <th>Start Date</th>
-                                                <th>End Date</th>
                                                 <th width="25%">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($assignments->assignments as $key => $assignment)
+                                            @foreach ($studentclassroutines->studentClassRoutines as $key => $studentClassRoutine)
 
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td> {{ $assignment->assignment_title }}</td>
-                                                <td> {{ $assignment->assignment_marks }}</td>
-                                                <td> {{ $assignment['student_class']['name'] }}</td>
-                                                <td> {{ $assignment['student_subject']['name'] }}</td>
-                                                <td> {{ $assignment['student_year']['name'] }}</td>
-                                                <td> {{ $assignment['student_month']['month_name'] }}</td>
-                                                <td> {{ $assignment['student_semester']['semester_name'] }}</td>
-                                                <td> {{ $assignment['student_batch']['batch_name'] }}</td>
-                                                <td> {{ $assignment['group']['name'] }}</td>
-                                                <td> {{ $assignment->assignment_start_date }}</td>
-                                                <td> {{ $assignment->assignment_end_date }}</td>
+                                                <td> {{ $studentClassRoutine['student_class']['name'] }}</td>
+                                                <td> {{ $studentClassRoutine['student_year']['name'] }}</td>
+                                                <td> {{ $studentClassRoutine['student_month']['month_name'] }}</td>
+                                                <td> {{ $studentClassRoutine['student_semester']['semester_name'] }}</td>
+                                                <td> {{ $studentClassRoutine['student_batch']['batch_name'] }}</td>
+                                                <td> {{ $studentClassRoutine['group']['name'] }}</td>
                                                 <td>
-                                                    <a title="Edit" href="{{ route('assignment.edit', $assignment->id) }}"
-                                                        class = "btn btn-info"><i class="fa fa-edit"></i></a>
-                                                    <a  title="Delete" id="delete"
-                                                        href="{{ route('assignment.delete', $assignment->id) }}"
-                                                        class="btn btn-danger" ><i class="fa fa-trash"></i></a>
+
+                                                    <a title="Class Routine Show" href="{{ route('student.class.routine.file.show',$studentClassRoutine->id) }}" class="btn btn-circle btn-info"><i class="fa fa-eye"></i></a>
+                                                    <a  title="Class Routine Dwonload" href="{{ route('student.class.routine.file.download',$studentClassRoutine->routine_file) }}" class="btn btn-circle btn-success"><i class="fa fa-download"></i></a>
+                                                    <a title="Edit" href="{{ route('student.class.routine.edit', $studentClassRoutine->id) }}"
+                                                        class = "btn btn-circle  btn-primary"><i class="fa fa-edit"></i></a>
+                                                        <a  title="Delete" id="delete"
+                                                            href="{{ route('student.class.routine.delete', $studentClassRoutine->id) }}"
+                                                            class="btn btn-danger btn-circle" ><i class="fa fa-trash"></i></a>
 
                                                 </td>
                                             </tr>

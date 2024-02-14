@@ -13,6 +13,7 @@ use App\Models\StudentBatch;
 use App\Models\StudentMonth;
 use App\Models\StudentSemester;
 use App\Models\StudentAssignment;
+use App\Models\StudentClassRoutine;
 use App\Models\AssignTeacher;
 use Illuminate\Support\Facades\Auth;
 
@@ -176,4 +177,134 @@ class TeacherPortalController extends Controller
         }
 
     //assignment add method end
+    // student class routine all method start
+    public function studentClassRoutineView(){
+
+        $user = auth()->user();
+        $assignedClasses = $user->assignedClasses;
+        foreach($assignedClasses as $assignedClasse){
+            $classId = $assignedClasse->class_id;
+        }
+        $teacherId = Auth::user()->id;
+        // dd($teacherId);
+        $studentclassroutines = AssignTeacher::where('teacher_id',$teacherId)->where('class_id',$classId)->with('studentClassRoutines')->first();
+        // dd($studentclassroutines);
+        return view('backend.teacher_panel.student_class_routine.student_class_routine_view',compact('studentclassroutines'));
+    }
+    public function studentClassRoutineAdd(){
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['groups'] = StudentGroup::all();
+        $data['shifts'] = StudentShift::all();
+        $data['batches'] = StudentBatch::all();
+        $data['months'] = StudentMonth::all();
+        $data['semesters'] = StudentSemester::all();
+        return view('backend.teacher_panel.student_class_routine.student_class_routine_add',$data);
+    }
+    public function studentClassRoutineEdit($id){
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['groups'] = StudentGroup::all();
+        $data['shifts'] = StudentShift::all();
+        $data['batches'] = StudentBatch::all();
+        $data['months'] = StudentMonth::all();
+        $data['semesters'] = StudentSemester::all();
+        $data['editData'] = StudentClassRoutine::find($id);
+        // dd($data['editData']->toArray());
+        return view('backend.teacher_panel.student_class_routine.student_class_routine_edit',$data);
+    }
+
+    public function studentClassRoutineStore(Request $request){
+        $studentClassRoutine = new StudentClassRoutine();
+        $studentClassRoutine->group_id = $request->group_id;
+        $studentClassRoutine->class_id = $request->class_id;
+        $studentClassRoutine->year_id = $request->year_id;
+        $studentClassRoutine->month_id = $request->month_id;
+        $studentClassRoutine->batch_id = $request->batch_id;
+        $studentClassRoutine->shift_id = $request->shift_id;
+        $studentClassRoutine->semester_id = $request->semester_id;
+        $routine_file = "";
+            if ($request->hasFile('routine_file') && $request->routine_file->isValid()) {
+                $routine_file = time() . '.' . $request->routine_file->extension();
+                $request->routine_file->move(public_path('upload/student_routine_file'), $routine_file);
+                $studentClassRoutine['routine_file']=$routine_file;
+            }
+        $studentClassRoutine->save();
+        $notification = array(
+            'message' => 'Assignment Add Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('student.class.routine.view')->with($notification);
+    }
+    public function studentClassRoutineUpdate(Request $request, $id){
+
+        $studentClassRoutine = StudentClassRoutine::find($id);
+        $studentClassRoutine->group_id = $request->group_id;
+        $studentClassRoutine->class_id = $request->class_id;
+        $studentClassRoutine->year_id = $request->year_id;
+        $studentClassRoutine->month_id = $request->month_id;
+        $studentClassRoutine->batch_id = $request->batch_id;
+        $studentClassRoutine->shift_id = $request->shift_id;
+        $studentClassRoutine->semester_id = $request->semester_id;
+        $routine_file = "";
+            if ($request->hasFile('routine_file') && $request->routine_file->isValid()) {
+                $file_path = public_path('upload/student_routine_file/'.$routine_file);
+                if(file_exists($file_path)){
+                    unlink($file_path);
+                }
+                $routine_file = time() . '.' . $request->routine_file->extension();
+                $request->routine_file->move(public_path('upload/student_routine_file'), $routine_file);
+                $studentClassRoutine['routine_file']=$routine_file;
+            }
+        $studentClassRoutine->save();
+        $notification = array(
+            'message' => 'Student Class Routine Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('student.class.routine.view')->with($notification);
+    }
+
+    public function studentClassRoutineDelete($id)
+    {
+
+
+            $studentClassRoutine = StudentClassRoutine::find($id);
+
+
+
+            $routine_file = $studentClassRoutine->routine_file;
+            $file_path = public_path('upload/student_routine_file/'. $routine_file);
+            if(file_exists($file_path)){
+                unlink($file_path);
+            }
+            try{
+
+                $studentClassRoutine->delete();
+
+
+
+
+
+            } catch(\Exception $e){
+
+            dd($e);
+
+
+            }
+            $notification = array(
+                'message' => 'Student Class Routine Deleted sucessfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }
+        public function studentClassRoutineFileShow($id){
+            $studentRoutineFile = StudentClassRoutine::find($id);
+            return view('backend.teacher_panel.student_class_routine.student_class_routine_file_show',compact('studentRoutineFile'));
+        }
+        public function studentClassRoutineFileDownload($routine_file){
+            $studentRoutineFilePath = public_path('upload/student_routine_file') .'/'. $routine_file;
+            return response()->download( $studentRoutineFilePath);
+        }
+    // student class routine all method end
+
 }

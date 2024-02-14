@@ -32,4 +32,9 @@ class AssignTeacher extends Model
         return $this->hasMany(StudentAssignment::class, 'class_id','class_id');
     }
     /* for assignment view purpos on teacher panel end */
+    /* for student class routine view purpos on teacher panel start  */
+    public function studentClassRoutines(){
+        return $this->hasMany(StudentClassRoutine::class, 'class_id','class_id');
+    }
+    /* for student class routine view purpos on teacher panel end */
 }

@@ -110,7 +110,6 @@
                         <span> Teacher Dashboard</span>
                     </a>
                 </li>
-
                 <li class="treeview {{ $prefix == '/teacher/portal' ? 'active' : '' }} ">
                     <a href="#">
                         <i data-feather="message-circle"></i>
@@ -122,7 +121,19 @@
                     <ul class="treeview-menu">
                         <li class="{{ $route == 'assignment.view' ? 'active' : '' }}"><a
                                 href="{{ route('assignment.view') }}"><i class="ti-more"></i>View Assignment</a></li>
-
+                    </ul>
+                </li>
+                <li class="treeview {{ $prefix == '/teacher/portal/student/class/routine' ? 'active' : '' }} ">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>Student Class Routine </span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'student.class.routine.view' ? 'active' : '' }}"><a
+                                href="{{ route('student.class.routine.view') }}"><i class="ti-more"></i>View Student Class Routine</a></li>
                     </ul>
                 </li>
             @endif
