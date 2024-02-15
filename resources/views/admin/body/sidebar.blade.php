@@ -100,6 +100,20 @@
 
 
                 </li>
+                <li class="treeview {{ $prefix == '/student/portal/my/class/routine' ? 'active' : '' }} ">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>My Class Routine</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'my.class.routine.view' ? 'active' : '' }}"><a
+                                href="{{ route('my.class.routine.view') }}"><i class="ti-more"></i>View Class Routine</a></li>
+
+                    </ul>
+                </li>
             @endif
             {{-- student siderber end --}}
             {{-- Teacher sideber start --}}

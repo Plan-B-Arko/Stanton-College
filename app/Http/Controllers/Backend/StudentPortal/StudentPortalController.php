@@ -11,6 +11,7 @@ use App\Models\StudentGroup;
 use App\Models\StudentYear;
 use App\Models\StudentShift;
 use App\Models\StudentAssignment;
+use App\Models\StudentClassRoutine;
 use Illuminate\Support\Facades\Auth;
 
 class StudentPortalController extends Controller
@@ -111,4 +112,24 @@ class StudentPortalController extends Controller
         return response()->download( $assignmentDocumentPath);
     }
     // end semester wise data show metho
+
+    //myclass routine method start
+      // start semester wise data show metho
+      public function myClassRoutineView(){
+        $studnetId = Auth::user()->id;
+        $batchId =AssignStudent::where('student_id',$studnetId)->value('batch_id');
+        $classId =AssignStudent::where('student_id',$studnetId)->value('class_id');
+        $shiftId =AssignStudent::where('student_id',$studnetId)->value('shift_id');
+        $myClassRoutines = StudentClassRoutine::where('batch_id',$batchId)->where('class_id',$classId)->where('shift_id',$shiftId)->get();
+        // dd( $firstSemesterAssignments );
+        return view('backend.student_panel.sd_myclassroutine.my_class_routine_view',compact('myClassRoutines'));
+    }
+    public function myClassRoutineFileShow($id){
+        $myClassRoutineFile = StudentClassRoutine::find($id);
+        return view('backend.student_panel.sd_myclassroutine.my_class_routine_file_show',compact('myClassRoutineFile'));
+    }
+    public function myClassRoutineFileDownload($routine_file){
+        $myClassRoutineFilePath = public_path('upload/student_routine_file') .'/'. $routine_file;
+        return response()->download( $myClassRoutineFilePath);
+    }
 }

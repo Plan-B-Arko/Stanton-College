@@ -24,6 +24,12 @@ Route::get('/document/show/{id}',[StudentPortalController::class,'assignmentDocu
 Route::get('/document/download/{document}',[StudentPortalController::class,'assignmentDocumentDownload'])->name('assignment.document.download');
 });
 
+Route::prefix('/student/portal/my/class/routine')->group(function(){
+    Route::get('/view', [StudentPortalController::class, 'myClassRoutineView'])->name('my.class.routine.view');
+    Route::get('/file/show/{id}', [StudentPortalController::class, 'myClassRoutineFileShow'])->name('my.class.routine.file.show');
+    Route::get('/file/download/{routine_file}', [StudentPortalController::class, 'myClassRoutineFileDownload'])->name('my.class.routine.file.download');
+});
+
 
 });
 // });
